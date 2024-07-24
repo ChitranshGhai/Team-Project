@@ -1,11 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './Home/Header';
-
+import "./App.css";
+import Header from "./Home/Header";
+import ShopByCollection from "./ShopByCollection/ShopByCollection";
 
 function App() {
   return (
-    <Header/>
+    <>
+      <Header />
+      <ShopByCollection />
+    </>
   );
 }
 
