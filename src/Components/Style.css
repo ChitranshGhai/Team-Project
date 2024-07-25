@@ -1,0 +1,63 @@
+/* Global Changes */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Nav-Bar-Main-Box */
+.Nav-Main-Container{
+    height: 65px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+/* Nav-Bar-Logo */
+.Nav-Bar-Logo{
+    height: 100%;
+    width: 10%;
+    margin: 0;
+    padding-top: 3px;
+}
+
+/* Nav-Bar-List */
+.Nav-List{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;    
+    justify-content: space-evenly;
+}
+
+.Nav-List ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0%;
+    margin: 0%;
+
+}
+
+.Nav-List-Link{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+}
+
+
+/* Nav-Bar-Icons */
+.Nav-Icons{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
