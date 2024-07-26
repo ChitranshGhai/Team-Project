@@ -14,6 +14,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: sticky;
+    top: 0;
 }
 
 
@@ -49,6 +51,24 @@
     text-decoration: none;
     color: white;
     font-size: 17px;
+    display: inline-block;
+    position: relative;
+    padding-bottom: .25px;
+}
+
+.Nav-List-Link::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width .25s ease-out;
+}
+
+.Nav-List-Link:hover::before{
+    width: 100%;
 }
 
 
@@ -60,4 +80,5 @@
     justify-content: space-around;
     align-items: center;
 }
+
 
