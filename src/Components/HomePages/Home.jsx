@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "./Slider";
 import Inventory from "./Inventory";
 import OurStory from "./OurStory";
-import Contactus from "./ContactUs";
+import Social from "./Socials";
 import "./HomeStyle.css";
 
 function Home() {
@@ -11,7 +11,7 @@ function Home() {
       <Slider />
       <Inventory />
       <OurStory />
-      <Contactus />
+      <Social />
     </div>
   );
 }
