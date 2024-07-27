@@ -13,30 +13,38 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 10;
+    border: 2px solid red
 }
 
 
 /* Nav-Bar-Logo */
 .Nav-Bar-Logo{
     height: 100%;
-    width: 10%;
-    margin: 0; margin-left: 30px;
-    padding-top: 3px;
+    /* width: 10%; */
+    margin: 0; 
+    /* position: relative;
+    left: 40px; */
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 /* Nav-Bar-List */
 .Nav-List{
     height: 100%;
-    width: 40%;
-    padding-right: 50px;
-    margin-right: 400px;
+     width: 800px; 
+    /* margin-right: 400px; */
+    /* position: relative;
+    right: 300px; */
     display: flex;
     align-items: center;    
-    justify-content: space-around;
+    justify-content: space-between; 
 }
 
 .Nav-List ul{
@@ -80,18 +88,9 @@
 /* Nav-Bar-Icons */
 .Nav-Icons{
     height: 100%;
-    width: 10%;
+    /* width: 10%; */
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-
-/* View-All Button */
-#ViewAll-Button{
-    display: block;
-    color: white;
-    background-color: black;
-    padding: 10px 90px;
-    font-size: 25px;
-    margin:auto;
+    margin-right: 20px;
 }
