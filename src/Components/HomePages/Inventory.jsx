@@ -7,6 +7,7 @@ import './HomeStyle.css'
 
 function RowColLayoutColWidthBreakpointExample() {
   return (
+    <>
     <div className='container-fluid d-flex flex-wrap align-items-center justify-content-center border border-2 border-danger mt-3 p-0'>
       <div className='row m-5 d-flex justify-content-center'>
         <div className='col-sm-12 col-md-4 align-self-center'>
@@ -47,7 +48,10 @@ function RowColLayoutColWidthBreakpointExample() {
         </div>
       </div>
     </div>
-    
+    <button id='ViewAll-Button'>
+      View All
+    </button>
+    </>
   );
 }
 
