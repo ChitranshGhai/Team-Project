@@ -4,12 +4,13 @@
     box-sizing: border-box;
 }
 
+/* Slider-Section */
 .Slide-Image{
     width: 100%;
 
 }
 
-
+/* Inventory-Section */
 /* View-All Button */
 #ViewAll-Button{
     width: 350px;
@@ -28,8 +29,53 @@
     transition-timing-function: linear;
 }
 
+/* Inventory View Button Hover */
 #ViewAll-Button:hover{
     background-color: white;
     color: black;
     border: .5px solid black;
+}
+
+
+/* Inventory Heading */
+.Inventory-Heading{
+    margin-top: 50px;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Inve-Heading-Link{
+    color: black;
+    text-decoration: none;
+}
+
+
+
+/* OurStory-Section */
+
+/* OurStory-Main-Div */
+.OurStory-Para{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    text-wrap: wrap;
+    margin: 0;
+}
+/* OurStory Paragraph */
+.OurStory-Para{
+    font-size: x-large;
+    text-align: left;
+    position: relative;
+    right: 30px;
+}
+
+/* OurStory-img */
+.OurStory-Para img{
+    width: 600px;
+    height: 600px;
+    position: relative;
+    left: 30px;
 }
