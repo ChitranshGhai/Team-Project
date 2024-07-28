@@ -13,7 +13,7 @@ function Slider() {
     <Carousel
       activeIndex={index}
       onSelect={handleSelect}
-      className="border border-2 border-danger mt-3"
+      /* className="border border-2 border-danger mt-3" */
     >
       <Carousel.Item>
         <img className="Slide-Image" src={Slide1} alt="First Slide" />

@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 /* Slider-Section */
@@ -16,6 +16,7 @@
     width: 350px;
     height: 48px;
     margin: auto;
+    margin-top: -40px;
     background-color: black;
     color: white;
     display: flex;
@@ -40,6 +41,7 @@
 /* Inventory Heading */
 .Inventory-Heading{
     margin-top: 50px;
+    margin-bottom: -50px;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;  
     display: flex;
@@ -65,42 +67,63 @@
     margin: 0;
 }
 /* OurStory Paragraph */
-.OurStory-Para{
+#OurStory-Para{
     font-size: x-large;
     text-align: left;
-    position: relative;
-    right: 30px;
+    padding: 10px; padding-top: 75px;
 }
 
 /* OurStory-img */
-.OurStory-Para img{
-    width: 600px;
-    height: 600px;
-    position: relative;
-    left: 30px;
+#Ourstory-Img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+/* Media Querry For Our-Story Section */
+@media only screen and (max-width: 1087px) {
+    .Our-Story-main-Container{
+        flex-direction: column-reverse;
+    }
+
+    .Our-Story-main-Container img{
+        align-self:center;
+    }
 }
 
 
 /* Social Section */
 
+
+/* Social-section-Heading */
+.Social-Heading{
+    width: 100%;
+    margin-bottom: -50px;
+    font-family: Arial, Helvetica, sans-serif;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Social-Main-Div */
-/* .Socials-Main-Container{
+ .Socials-Main-Container{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-} */
+    justify-content: center;
+   /*  border: 2px solid red; */
+} 
 
 .Socials-Main-Container img{
-    width: 500px;
-    height: 600px;
-    transition: transform;
+    max-width: 450px;
+    height:auto;
+    transition:all;
     transition-duration: .3s;
-    transition-timing-function: linear;
+    transition-timing-function: ease-in-out;
 }
 
 .Socials-Main-Container img:hover{
-    border: 10px solid gray;
+    /* border: 10px solid gray; */
     transform: scale(1.03);
 }
 

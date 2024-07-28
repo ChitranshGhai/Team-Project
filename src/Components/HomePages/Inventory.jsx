@@ -14,7 +14,7 @@ function RowColLayoutColWidthBreakpointExample() {
           <h1>Best Sellers</h1>
         </Link>
       </div>
-      <div className="container-fluid d-flex flex-wrap align-items-center justify-content-center border border-2 border-danger mt-3 p-0">
+      <div className="container-fluid d-flex flex-wrap align-items-center justify-content-center mt-3 p-0" /* border border-2 border-danger */>
         <div className="row m-5 d-flex justify-content-center">
           <div className="col-sm-12 col-md-4 align-self-center">
             <Card
@@ -42,7 +42,7 @@ function RowColLayoutColWidthBreakpointExample() {
               /* style={{ width: '22rem' }} */ className="rounded-0 border-0"
               data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="1300"
+              data-aos-delay="1200"
             >
               <Card.Img
                 variant="top"
@@ -63,7 +63,7 @@ function RowColLayoutColWidthBreakpointExample() {
               /* style={{ width: '22rem'}} */ className="rounded-0 border-0"
               data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="1600"
+              data-aos-delay="1400"
             >
               <Card.Img
                 variant="top"
