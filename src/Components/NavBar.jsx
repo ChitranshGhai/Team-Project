@@ -22,7 +22,7 @@ function NavBar() {
             <Link className="Nav-List-Link">Accessories </Link>
           </li>
           <li>
-            <Link className="Nav-List-Link">Collections</Link>
+            <Link to="/Collections" className="Nav-List-Link">Collections</Link>
           </li>
           <li>
             <Link to="/OurStory" className="Nav-List-Link">Our Story</Link>
