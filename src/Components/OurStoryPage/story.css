@@ -1,8 +1,10 @@
-
+.whole{
+    background-color:rgba(231, 232, 230, 0.917);
+}
 
 .container{
-    /* padding-right: 10px;
-    padding-left: 10px; */
+    padding-right: 10%;
+    padding-left: 10%;
     margin-left: 0px;
     margin-right: 0px;
     box-sizing: border-box;
@@ -10,7 +12,7 @@
     border: 1px black;
 }
 .story {
-    /* padding: 50px; */
+    padding: 50px;
     text-align: center;
     padding: 35px 180px 6px;
     position: relative;
@@ -32,6 +34,7 @@
     margin-top: 5%;
     border-radius: 5%;
     border: 2cap;
+    box-shadow: 5px 6px 11px black;
 
 }
 .para1{
@@ -45,9 +48,10 @@ padding-left: 6%;
 padding-right: 8%;
 padding-top: 5%;
 padding-bottom: 5%;
-font-family:cursive;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 font-size: larger;
-box-shadow: 2px 2px 6px black;
+box-shadow: 2px 4px 11px black;
+background-color: #ffffff;
 }
 .second{
     width:390px;
@@ -57,21 +61,23 @@ box-shadow: 2px 2px 6px black;
     margin-left: 10%;
     margin-bottom: 2%;
     border-radius: 5%;
-    margin-top: 8%;
-    border: 2cap;
+    margin-top: 10%;
+    border: 2cap black;
+    box-shadow: 3px 1px 12px black;
 }
 .para2{
     width: 75%;
-    font-family:cursive;
+    font-family:Arbutus Slab;
 font-size: larger;
 text-align: center;
 margin: 51px;
 margin-left: 12%;
-margin-top: 17%;
+margin-top: 19%;
 padding: 4%;
 padding-right: 8%;
 padding-left: 8%;
-/* padding-top: 5%; */
-/* padding-bottom: 5%; */
+padding-top: 5%; 
+ padding-bottom: 5%;
 box-shadow: 2px 2px 6px black;
+background-color: #ffffff;
 }
