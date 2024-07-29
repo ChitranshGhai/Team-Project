@@ -6,7 +6,7 @@ import OurStory from './Components/OurStoryPage/ourStory';
 import Footer from './Components/Footer';
 import ScrollToTop from './Components/ScrollToTop';
 import ContactUs from './Components/contactPage/ContactUs';
-
+import Gifts from './Components/CollectionPages/Gifts';
 function App() {
   return (
     <>
@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/OurStory" element={<OurStory />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+           <Route path='/Collection' element={<Gifts/>} />
         </Routes>
       </ScrollToTop>
       <Footer />

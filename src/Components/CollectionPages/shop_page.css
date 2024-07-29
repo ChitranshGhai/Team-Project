@@ -1,0 +1,217 @@
+.container{
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    padding: 20px;
+}
+.content-wrap{
+  display: flex;
+  justify-content: space-between;
+  height: 800px;
+}
+.main{
+    width: 50%;
+    height: 700px;
+    margin-left: 6px;
+    margin-top: 6%;
+}
+.main-content{
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 500px;
+}
+.side-area{
+    width: 15%;
+    margin-top: 5%;
+}
+.first{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 30%;
+    margin: 7px;
+    transition: opacity 0.35s, transform 0.35s;
+    transform: scale3d(0.88, 0.88, 0.88);
+}
+.first:hover{
+    opacity: 0.6;
+    transform: scale3d(0.95, 0.95, 0.95);
+}
+.counter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.counter button{
+    width: 30px;
+    height: 25px; /* Reduced height */
+    font-size: 20px; /* Adjust font size if needed */
+    padding: 5px;
+}
+.counter h3{
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+}
+.product-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px;
+    margin-top: 20%;
+    font-family:Arbutus Slab;
+  }
+  
+  .product-price {
+    font-size: 24px;
+    margin: 1px 20px;
+  }
+  
+  .review{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+  }
+  
+  .stars {
+    font-size: 20px;
+    color: #ff9800; /* Gold color for stars */
+  }
+  
+  .review-text {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .product-desc{
+    font-size: 16px;
+    color: #666;
+    margin: 20px 0;
+    padding: 0 20px;
+    line-height: 1.5;
+  }
+  
+  .counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin:20px;
+  }
+  
+  .counter button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #858383;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .counter h3 {
+    margin: 0;
+    font-size: 24px;
+  }
+  .add-to-cart{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .button-group{
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  .add-to-cart:hover{
+    border-radius: 30px;
+    background-color: #fff;
+    color: #000;
+    opacity: 0.7;
+    border: 2px solid #000;
+  }
+  .buy-now{
+    display: flex;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .buy-now:hover{
+    border-radius: 30px;
+    background-color: #fff;
+    color: #000;
+    opacity: 0.7;
+    border: 2px solid#ff9800;
+  }
+  .add_info{
+    margin-top: 20px;
+    padding: 20px;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    background-color: #f9f9f9; 
+  }
+  .related-prod{
+    display: flex;
+  }
+ .container h3{
+  margin-top: 6%;
+    margin-bottom: 3%;
+    font-size: 2.5rem;
+  }
+  .image-wrapper {
+    border-radius: 5px;
+    margin: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+  }
+  .image-inner-wrapper {
+    position: relative;
+  }
+  .image-inner-wrapper img{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    transition: opacity 0.35s, transform 0.35s;
+    transform: scale3d(0.88, 0.88, 0.88);
+  }
+  .image-inner-wrapper:hover img {
+    opacity: 0.6;
+    transform: scale3d(0.95, 0.95, 0.95);
+  }
+  .product-title{
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  .product-desc{
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .product-price{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
