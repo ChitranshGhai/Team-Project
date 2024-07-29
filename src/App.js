@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/OurStory" element={<OurStory />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+          {/* <Route path='/Collection' element={<} */}
         </Routes>
       </ScrollToTop>
       <Footer />
