@@ -7,6 +7,7 @@ import Footer from './Components/Footer';
 import ScrollToTop from './Components/ScrollToTop';
 import ContactUs from './Components/contactPage/ContactUs';
 import Gifts from './Components/CollectionPages/Gifts';
+import ShopPage from './Components/CollectionPages/ShopPage';
 function App() {
   return (
     <>
@@ -17,7 +18,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/OurStory" element={<OurStory />} />
           <Route path="/ContactUs" element={<ContactUs />} />
-           <Route path='/Collection' element={<Gifts/>} />
+           <Route path='/Collections' element={<Gifts/>} />
+           <Route path="/product" element={<ShopPage/>}/>
         </Routes>
       </ScrollToTop>
       <Footer />

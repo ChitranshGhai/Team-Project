@@ -1,7 +1,7 @@
 import React from 'react'
 import candle from '../Images/gift_candles.jpeg'
 import candle1 from '../Images/gift2.jpg'
-import './gifts.css'
+import '../CollectionPages/gifts.css'
 import { Link } from 'react-router-dom'
 export default function Gifts() {
   return (
