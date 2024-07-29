@@ -1,0 +1,121 @@
+.header{
+    width:100%;
+
+}
+
+/*.gradient-background {
+    background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+    overflow: hidden;
+    animation: gradient-animation 18s ease infinite;
+  }
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+*/
+#damn{
+     border: 2px solid black;
+     width: 50%;
+     position: relative;
+     left: 50px;
+     margin-top: 50px; 
+    display:flex;
+    flex-direction: column;
+    margin-left: 20%;
+}
+.contact-info { 
+    text-align: center;
+    margin: 20px;
+    font-family: "Dongle", sans-serif;
+    font-weight: 400;
+    font-style: normal
+}
+
+.box h2 {
+   padding-bottom: 40px;
+    text-align: center;
+padding-top: 20px; 
+}
+
+.contact-info p {
+    font-size: 25px;
+    margin: 5px;
+}
+
+.contact-form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    width: 700px;
+    font-family: "Dongle", sans-serif;
+
+}
+
+.contact-form textarea {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 30px;
+    border: 1px solid #000;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Dongle", sans-serif;
+    font-weight: 400;
+    font-style: normal
+}
+
+.contact-form input[type="email"] {
+    width: 200px;
+    padding: 2px;
+    font-size: 26px;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+
+.contact-form button {
+    padding: 7px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.contact-form button:hover {
+    background-color: #444;
+}
+
+#conty{
+    height: 200px;
+    box-shadow: 5px 5px;
+}
+
+#butt{
+    margin-top: 50px;
+    height: 40px;
+    position: relative;
+    right: 10px;
+}
+
+.form-group h3{
+    font-size: 40px;
+}
+
+.box{
+    border: 5px;;
+}

@@ -28,7 +28,7 @@ function NavBar() {
             <Link to="/OurStory" className="Nav-List-Link">Our Story</Link>
           </li>
           <li>
-            <Link className="Nav-List-Link">Contact Us</Link>
+            <Link to="/ContactUs" className="Nav-List-Link">Contact Us</Link>
           </li>
         </ul>
       </div>
