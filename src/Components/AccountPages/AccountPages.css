@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Form-MainContainer{
+    width: 350px;
+    height: 650px;
+    background-color: #000035;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto; margin-top: 5vh;
+    border-radius: 5px;
+}
+
+.Username-Input, .Password-Input{
+    width: 80%;
+    height: 35px;
+    background-color: #000032;
+    border-radius: 0;
+    border: none;
+    margin-top: 12px;
+    border-bottom: 1.8px solid  #a57fb2;
+}
+
+::placeholder{
+    color: white;
+    opacity: 1;
+    cursor:alias;
+}
+
+.Username-Input:focus, .Password-Input:focus{
+    outline: none;
+    background-color: #000032;
+    color: white;
+    visibility: none;
+    
+}
+
+#SignUp-Btn{
+    width: 80%;
+    height: 35px;
+    margin-top: 12px;
+    border: 0px;
+    color: white;
+    border-radius: 3px;
+    background-color: #a57fb2;
+}
+
+#S-U{
+    color: gray;
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+#Sign-Up{
+    text-decoration: none;
+    color: #a57fb2;
+    margin-top: 5px;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+#ForgetPassword{
+    color:#a57fb2;
+    float: right;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    position: relative;
+    margin-top: 12px; margin-left: 134px;
+}
+
+#Heading{
+    color: white;
+    font-family: sans-serif;
+    margin-top: 10px;
+}
+
+#Msg{
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+#Top-img{
+    height: 130px;
+    width: 100px;
+    border-radius: 100%;
+    margin-bottom: 5px;
+}
+
+
+
+
+/* Sign-Up Form */
+
+.SignUp-Main-container{
+    width: 350px;
+    height: 650px;
+    background-color: #000035;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto; margin-top: 5vh;
+    border-radius: 5px;
+}
+
+.Signup-UserName-Input, .Signup-Email-Input,/* .Signup-Date-Input */.Signup-Phone-Input,.Signup-Password-Input{
+    width: 80%;
+    height: 35px;
+    background-color: #000032;
+    border-radius: 0;
+    border: none;
+    margin-top: 12px;
+    color: white;
+    border-bottom: 1.8px solid  #a57fb2 ;
+    animation-name: backInLeft;
+}
+
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+.Signup-UserName-Input, .Signup-Email-Input,/* .Signup-Date-Input */.Signup-Phone-Input,.Signup-Password-Input{
+    outline: none;
+    background-color: #000032;
+    color: white;
+    visibility: none; 
+}
+
+#SignUp-Btn{
+    width: 80%;
+    height: 35px;
+    margin-top: 12px;
+    border: 0px;
+    color: white;
+    border-radius: 3px;
+    background-color: #a57fb2;
+    animation-name: backInRight;
+}
+
+
+#Heading{
+    color: white;
+    font-family: sans-serif;
+    margin-top: 10px;
+    animation-name: backInRight;
+}
+
+.SignUp-Logo{
+    height: 130px;
+    width: 100px;
+    border-radius: 100%;
+    margin-bottom: 5px;
+    animation-name: backInRight;
+}
+
+/* input[type=date]::-webkit-calendar-picker-indicator {
+    filter: invert();
+} */

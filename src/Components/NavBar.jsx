@@ -3,7 +3,9 @@ import "./Style.css";
 import { Link } from "react-router-dom";
 function NavBar() {
   return (
-    <nav className="Nav-Main-Container container-fluid" /* data-aos="fade-down" */>
+    <nav
+      className="Nav-Main-Container container-fluid" /* data-aos="fade-down" */
+    >
       {/* Nav-Bar-Logo */}
       <h2 className="Nav-Bar-Logo">
         <Link to="/">Logo</Link>
@@ -22,20 +24,26 @@ function NavBar() {
             <Link className="Nav-List-Link">Accessories </Link>
           </li>
           <li>
-            <Link to="/Collections" className="Nav-List-Link">Collections</Link>
+            <Link to="/Collections" className="Nav-List-Link">
+              Collections
+            </Link>
           </li>
           <li>
-            <Link to="/OurStory" className="Nav-List-Link">Our Story</Link>
+            <Link to="/OurStory" className="Nav-List-Link">
+              Our Story
+            </Link>
           </li>
           <li>
-            <Link to="/ContactUs" className="Nav-List-Link">Contact Us</Link>
+            <Link to="/ContactUs" className="Nav-List-Link">
+              Contact Us
+            </Link>
           </li>
         </ul>
       </div>
 
       {/* Nav-Bar-Icons */}
       <div className="Nav-Icons">
-        <Link>
+        <Link to="/Login">
           <i
             class="bi bi-person"
             style={{ fontSize: 32, color: "lightsteelblue", paddingRight: 8 }}
