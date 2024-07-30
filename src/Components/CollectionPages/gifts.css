@@ -1,8 +1,21 @@
+
+/* Main Container CSS */
 .page-container{
   display: flex;
   /* flex-direction: row-reverse; */
   background-color: #fde4e4;
 }
+/* Main Heading of Collection Section */
+#height1{
+    text-align: center;
+    padding: 65px;
+    padding-top: 40px;
+    font-family: 'Bree-Serif';
+    background-color: #fde4e4;
+  }
+
+
+/* Left Side Filter Section CSS */
 .sidebar{
   width: 300px;
   height: 800px;
@@ -11,11 +24,13 @@
   border-right: 1px solid #ddd;
   align-items: flex-end;
 }
+/* FILTER Section CSS */
 .sidebar h3 {
   font-size: 20px;
   margin-bottom: 40px;
   letter-spacing: 1.5cap;
 }
+/* Filter List */
 .filter-list{
   list-style: none;
   padding: 0;
@@ -32,7 +47,13 @@
   color: #333;
   font-size: 1.2rem;
 }
-
+/* Radio Button List and Aroma, Candles, Fragnances List CSS */
+.menu1>li{
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+/* Drop-Down Menu List in Fragnances CSS */
 .menu {
   display: none;
   list-style: none;
@@ -57,22 +78,14 @@
 .dropdown:hover .menu {
   display: block;
 }
-.menu1>li{
-  margin-bottom: 5px;
-  font-size: 1rem;
-  font-weight: 500;
-}
+
+
+/* Candles Information CSS Section */
 .main-content {
   flex-grow: 1;
   padding: 20px;
 }
-#height1{
-    text-align: center;
-    padding: 65px;
-    padding-top: 40px;
-    font-family: 'Bree-Serif';
-    background-color: #fde4e4;
-  }
+/* All Candles Container */
   .image-container {
     display: flex;
     flex-wrap: wrap;
@@ -81,7 +94,7 @@
     margin-left: 1%;
     margin-right: 1%;
   }
-  
+/* Image Container */
   .image-wrapper {
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -96,7 +109,7 @@
   .image-inner-wrapper {
     position: relative;
   }
-  
+/* Image CSS */  
   .product-image {
     width: 100%;
     height: 300px;
@@ -105,34 +118,36 @@
     transition: opacity 0.35s, transform 0.35s;
     transform: scale3d(0.88, 0.88, 0.88);
   }
-  
+/* hover Animation On Image */
   .image-inner-wrapper:hover .product-image {
     opacity: 0.6;
     transform: scale3d(0.95, 0.95, 0.95);
   }
-    .product-title{
-      font-size: 1.2rem;
-      margin: 10px 0;
+  .product-title{
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  .product-desc{
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .product-price{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+/* Media Querry For Responsiveness (NotWorking Currently) */  
+  @media (max-width: 768px) {
+    .col-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
-    .product-desc{
-      font-size: 0.9rem;
-      color: #666;
-    }
-    .product-price{
-      font-size: 1rem;
-      font-weight: bold;
-      color: #333;
-    }
-    @media (max-width: 768px) {
-      .col-3 {
-          flex: 0 0 50%;
-          max-width: 50%;
-      }
   }
   
   @media (max-width: 576px) {
-      .col-3 {
-          flex: 0 0 100%;
-          max-width: 100%;
-      }
+    .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
   }
