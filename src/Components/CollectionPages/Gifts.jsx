@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export default function Gifts() {
   return (
     <>
-     <h1>Collections</h1>
+     <h1 id="height1">Collections</h1>
     <div className="page-container">
         <aside className="sidebar">
             <h3>FILTERS</h3>
