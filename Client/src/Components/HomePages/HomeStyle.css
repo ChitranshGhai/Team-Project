@@ -16,7 +16,7 @@
     width: 350px;
     height: 48px;
     margin: auto;
-    margin-top: -40px;
+    /* margin-top: -40px; */
     background-color: black;
     color: white;
     display: flex;
@@ -40,8 +40,8 @@
 
 /* Inventory Heading */
 .Inventory-Heading{
-    margin-top: 50px;
-    margin-bottom: -50px;
+    margin-top: 70px;
+    margin-bottom: -40px;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;  
     display: flex;
@@ -57,8 +57,13 @@
 
 
 /* OurStory-Section */
+/* Our-Story-Main-Div */
+.Our-Story-main-Container{
+    margin-top: 80px;
+}
 
-/* OurStory-Main-Div */
+
+/* OurStory-Content-Div */
 .OurStory-Para{
     width: 80%;
     display: flex;
@@ -98,7 +103,7 @@
 /* Social-section-Heading */
 .Social-Heading{
     width: 100%;
-    margin-bottom: -50px;
+    margin-bottom: -30px; margin-top: 70px;
     font-family: Arial, Helvetica, sans-serif;  
     display: flex;
     align-items: center;

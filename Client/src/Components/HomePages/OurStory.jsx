@@ -3,7 +3,7 @@ import OurStorypic from "../Images/Instagram.webp";
 import { Link } from "react-router-dom";
 function OurStory() {
   return (
-    <div className="container-fluid Our-Story-main-Container d-flex align-item-center justify-content-around mt-5 " /* border border-2 border-danger */>
+    <div className="container-fluid Our-Story-main-Container d-flex align-item-center justify-content-around " /* border border-2 border-danger */>
         <p id="OurStory-Para" data-aos="fade-right">
           <h2>Our Story</h2>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae neque
