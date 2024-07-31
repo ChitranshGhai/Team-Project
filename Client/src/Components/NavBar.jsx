@@ -45,19 +45,19 @@ function NavBar() {
       <div className="Nav-Icons">
         <Link to="/Login">
           <i
-            class="bi bi-person"
+            className="bi bi-person"
             style={{ fontSize: 32, color: "lightsteelblue", paddingRight: 8 }}
           ></i>
         </Link>
         <Link>
           <i
-            class="bi bi-search"
+            className="bi bi-search"
             style={{ fontSize: 24, color: "lightsteelblue", paddingRight: 8 }}
           ></i>
         </Link>
         <Link>
           <i
-            class="bi bi-cart2"
+            className="bi bi-cart2"
             style={{ fontSize: 28, color: "lightsteelblue", paddingRight: 8 }}
           ></i>
         </Link>
