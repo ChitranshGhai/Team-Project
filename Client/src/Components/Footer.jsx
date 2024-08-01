@@ -8,6 +8,8 @@ function Footer() {
             <a href="#top">Back to top</a>
       </div>
       <footer className='Footer'>
+      <div className='media-1'>
+
       <div className="footer-section">
           <h3>Contact</h3>
           <p>P: +91 9871580964</p>
@@ -20,6 +22,10 @@ function Footer() {
           <p><a href="#">Corporate Sales</a></p>
           <p><a href="#">Gifts</a></p>
       </div>
+
+      </div>
+
+      <div className='media-2'>
       <div className="footer-section">
           <h3>Orders</h3>
           <p><a href="#">My Orders</a></p>
@@ -33,6 +39,8 @@ function Footer() {
               <input type="email" placeholder="Enter Email"/>
               <button type="submit">&#8594;</button>
           </form>
+      </div>
+
       </div>
       </footer>
     </div>
