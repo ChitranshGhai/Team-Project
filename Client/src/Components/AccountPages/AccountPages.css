@@ -4,95 +4,120 @@
     box-sizing: border-box;
 }
 
-.Form-MainContainer{
-    width: 350px;
-    height: 650px;
-    background-color: #000035;
+/* Login Outer Div For Image  */
+.Outer-Picture-Div{
+    width: 100%;
+    height: 85vh;
+    /* border: 2px solid red; */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto; margin-top: 5vh;
-    border-radius: 5px;
+    background-color: #637074;
 }
 
-.Username-Input, .Password-Input{
-    width: 80%;
-    height: 35px;
-    background-color: #000032;
-    border-radius: 0;
-    border: none;
-    margin-top: 12px;
-    border-bottom: 1.8px solid  #a57fb2;
+/* Login Container Div For Both Transperant and Form Div */
+.Container-Div{
+    width: 63%;
+    height: 90%;
+    /* border: 2px solid orange; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #212227;
 }
+
+/* Login Margin Div to Provide Correct margin */
+.Margin-Div{
+    width: 97%;
+    height: 95%;
+    /* border: 2px solid red; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Login Transperant div */
+.Image-Div{
+    width: 45%;
+    height: 100%;
+    /* border: 2px solid blue; */
+    border-radius: 10px;
+}
+.Image-Div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Login Form Div */
+.Form-Div{
+    width: 55%;
+    height: 100%;
+    /* border: 2px solid blue; */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main Form Div */
+.Main-Form{
+    height: 80%;
+    width: 70%;
+    /* border: 2px solid blue; */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.Form{
+    width: 100%;
+}
+
+#Email,#Password{
+    width: 100%;
+    height: 5.5vh;
+    background-color: #637074;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding-left: 5px;
+    opacity: .4;
+    margin-bottom: 8px;
+    outline: none; 
+}
+
+#Email:focus,#Password:focus{
+    box-shadow: 0 0 0 2px rgb(23, 207, 106);
+}
+
+
+
+#Sign-In-Btn{
+    width: 100%;
+    height: 5.5vh;
+    background-color: #637074;
+    border-radius: 5px;
+    margin-top: 25px;
+    border: none;
+    color: white;
+    font-size: larger;
+    font-weight:600;
+    text-align: center;
+}
+
+#Sign-In-Btn:hover{
+    box-shadow: 0 0 0 2px rgb(23, 207, 106);
+}
+
 
 ::placeholder{
     color: white;
     opacity: 1;
-    cursor:alias;
-}
-
-.Username-Input:focus, .Password-Input:focus{
-    outline: none;
-    background-color: #000032;
-    color: white;
-    visibility: none;
-    
-}
-
-#SignUp-Btn{
-    width: 80%;
-    height: 35px;
-    margin-top: 12px;
-    border: 0px;
-    color: white;
-    border-radius: 3px;
-    background-color: #a57fb2;
-}
-
-#S-U{
-    color: gray;
-    margin-top: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-}
-
-#Sign-Up{
-    text-decoration: none;
-    color: #a57fb2;
-    margin-top: 5px;
-    font-size: 12px;
-    font-family: sans-serif;
-}
-
-#ForgetPassword{
-    color:#a57fb2;
-    float: right;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    position: relative;
-    margin-top: 12px; margin-left: 134px;
-}
-
-#Heading{
-    color: white;
-    font-family: sans-serif;
-    margin-top: 10px;
-}
-
-#Msg{
-    color: gray;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    margin-top: 5px;
-}
-
-#Top-img{
-    height: 130px;
-    width: 100px;
-    border-radius: 100%;
-    margin-bottom: 5px;
 }
 
 
@@ -122,11 +147,6 @@
     color: white;
     border-bottom: 1.8px solid  #a57fb2 ;
     animation-name: backInLeft;
-}
-
-::placeholder{
-    color: white;
-    opacity: 1;
 }
 
 .Signup-UserName-Input, .Signup-Email-Input,/* .Signup-Date-Input */.Signup-Phone-Input,.Signup-Password-Input{

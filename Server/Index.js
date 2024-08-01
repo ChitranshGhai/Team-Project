@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 9994;
+const port = 9998;
 const app = express();
 require('./DbConn/Conn');
 const customer = require('./DbConn/User');
@@ -31,7 +31,8 @@ app.post('/api/Login', async (req, res) => {
             res.json({ data: "No user Found" });
         }
     } catch (err) {
-        console.log((err));
+        console.error((err));
+        res.status(500).json({ data: "An error occurred", error: err.message })
     }
 });
 

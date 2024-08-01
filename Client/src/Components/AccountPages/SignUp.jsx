@@ -11,7 +11,7 @@ function SignUp() {
   const handleSubmit=async(e)=>{
     e.preventDefault()
     console.log({name:name,email:email,phone:phone,password:password})
-    let result= await fetch('http://localhost:9994/api/SignUp',{
+    let result= await fetch('http://localhost:9998/api/SignUp',{
       method:'post',
       body: JSON.stringify({name,email,phone,password}),
       headers:{
