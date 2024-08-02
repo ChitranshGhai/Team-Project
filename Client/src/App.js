@@ -10,6 +10,8 @@ import Gifts from "./Components/CollectionPages/Gifts";
 import ShopPage from "./Components/CollectionPages/ShopPage";
 import Login from "./Components/AccountPages/Login";
 import SignUp from "./Components/AccountPages/SignUp";
+import Faq from "./Components/FaqPage/Faq";
+import BulkOrder from "./Components/BulkOrder/BulkOrder";
 import Cart from "./Components/Cart/Cart";
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route path="/product" element={<ShopPage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
+            <Route path='/Faq' element={<Faq/>}></Route>
+            <Route path='/BulkOrder' element={<BulkOrder/>}></Route>
             <Route path="/Cart" element={<Cart />} />
           </Routes>
         </ScrollToTop>

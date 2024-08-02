@@ -1,0 +1,21 @@
+#root{
+    background-color: #f4e7d7;
+}
+
+.MainForm{
+    border: 2px solid black;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 30%;
+    display:flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 38%;
+    text-align: center;
+    align-self: center;
+}
+
+.HeaderClass{
+    text-align: center;
+    margin-top: 40px;
+}
