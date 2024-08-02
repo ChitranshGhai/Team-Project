@@ -2,7 +2,7 @@ import React from 'react'
 import "./ContactUs.css"
 function ContactUs() {
   return (
-
+ <div className='MainOh'>
   <div className='box ' id="damn" >
  
      <div className='container-fluid d-flex justify-content-center'>
@@ -12,10 +12,10 @@ function ContactUs() {
         <h2>Contact Us</h2>
 
        <div className="contact-form">
-             <textarea id="conty" placeholder="type here"></textarea>
+             <textarea id="conty" placeholder="type here" className="textarea-placeholder"></textarea>
                <div className="form-group">
                   <h3>How may we assist you?</h3>
-                   <input type="email" placeholder="enter your email"/>
+                   <input type="email" placeholder="enter your email" className="input-placeholder"/>
                     <button id="butt">submit</button>
                    </div>
                 </div>
@@ -29,6 +29,7 @@ function ContactUs() {
                  </div>
 
   </div>
+ </div>
 
   )
 }
