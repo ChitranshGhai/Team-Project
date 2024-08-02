@@ -14,7 +14,7 @@ function OurStory() {
           <br />
           <Link to="/OurStory">Read Our Story</Link>
         </p>
-        <img id="Ourstory-Img" src={OurStorypic} alt="candle picture" data-aos="fade-left" />
+        <img className="CardBoxShadow" id="Ourstory-Img" src={OurStorypic} alt="candle picture" data-aos="fade-left" />
       </div>
   );
 }

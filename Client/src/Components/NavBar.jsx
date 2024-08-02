@@ -44,7 +44,7 @@ function NavBar() {
 
       {/* Nav-Bar-Icons */}
       <div className="Nav-Icons">
-        <Link to="/profile">
+        <Link to="/Login">
           <i
             className="bi bi-person"
             style={{ fontSize: 32, color: "lightsteelblue", paddingRight: 8 }}

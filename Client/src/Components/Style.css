@@ -9,7 +9,7 @@
 .Nav-Main-Container {
     height: 85px;
     width: 100%;
-    background-color: black;
+    background-color: #291B1B;
     color: white;
     display: flex;
     align-items: center;
@@ -113,7 +113,7 @@
     }
 
     .Nav-List ul {
-        background-color: black;
+        background-color: #291B1B;
         flex-direction: column;
         display: block;
         width: 100%;
@@ -159,7 +159,7 @@
     display: flex;
     justify-content: space-evenly;
     padding: 20px;
-    background-color: #000;
+    background-color: #291B1B;
     color: #fff;
     text-align: center;
 }
@@ -274,7 +274,6 @@
 .back-to-top-section {
     display: flex;
     justify-content: center;
-    /* margin-top: 60px; */
     text-align: center;
 }
 
@@ -282,11 +281,11 @@
     color: #fff;
     width: 100%;
     text-decoration: none;
-    background-color: #1C2326;
+    background-color: #3D2727;
     padding: 10px 20px;
     transition: background-color 0.3s;
 }
 
 .back-to-top-section a:hover {
-    background-color: #32383B;
+    background-color: #4F3333;
 }

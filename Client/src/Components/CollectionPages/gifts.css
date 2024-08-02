@@ -1,9 +1,8 @@
-
 /* Main Container CSS */
 .page-container{
   display: flex;
   /* flex-direction: row-reverse; */
-  background-color: #fde4e4;
+  background-color: #f4e7d7;
 }
 /* Main Heading of Collection Section */
 #height1{
@@ -11,7 +10,8 @@
     padding: 65px;
     padding-top: 40px;
     font-family: 'Bree-Serif';
-    background-color: #fde4e4;
+    margin: 0;
+    background-color: #f4e7d7;
   }
 
 
@@ -20,9 +20,10 @@
   width: 300px;
   height: 800px;
   padding: 50px;
-  background-color: #f8f8f8;
   border-right: 1px solid #ddd;
   align-items: flex-end;
+  background-color: white;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2); 
 }
 /* FILTER Section CSS */
 .sidebar h3 {
@@ -63,7 +64,6 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #f8f8f8;
   border: 1px solid #ddd;
   z-index: 1000;
 }
@@ -95,16 +95,16 @@
     margin-right: 1%;
   }
 /* Image Container */
-  .image-wrapper {
+  /* .image-wrapper {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 4px;
     margin: 10px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2); 
     background-color: #fff;
     position: relative;
-  }
+  } */
   
   .image-inner-wrapper {
     position: relative;

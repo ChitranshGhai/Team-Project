@@ -1,48 +1,54 @@
-.header{
-    width:100%;
+body {
+    background-color: #f4e7d7;
+}
 
+.header {
+    width: 100%;
 }
 
 /*.gradient-background {
     background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
     overflow: hidden;
     animation: gradient-animation 18s ease infinite;
-  }
+}
 
-  @keyframes gradient-animation {
+@keyframes gradient-animation {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
     50% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
     100% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
-  }
+}
 */
-#damn{
-     border: 2px solid black;
-     width: 50%;
-     position: relative;
-     left: 50px;
-     margin-top: 50px; 
-    display:flex;
+
+#damn {
+    border: 2px solid black;
+    width: 50%;
+    position: relative;
+    left: 50px;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    display: flex;
     flex-direction: column;
     margin-left: 20%;
 }
-.contact-info { 
+
+.contact-info {
     text-align: center;
     margin: 20px;
     font-family: "Dongle", sans-serif;
     font-weight: 400;
-    font-style: normal
+    font-style: normal;
 }
 
 .box h2 {
-   padding-bottom: 40px;
+    padding-bottom: 40px;
     text-align: center;
-padding-top: 20px; 
+    padding-top: 20px;
 }
 
 .contact-info p {
@@ -57,7 +63,6 @@ padding-top: 20px;
     margin: auto;
     width: 700px;
     font-family: "Dongle", sans-serif;
-
 }
 
 .contact-form textarea {
@@ -75,7 +80,7 @@ padding-top: 20px;
     align-items: center;
     font-family: "Dongle", sans-serif;
     font-weight: 400;
-    font-style: normal
+    font-style: normal;
 }
 
 .contact-form input[type="email"] {
@@ -100,22 +105,22 @@ padding-top: 20px;
     background-color: #444;
 }
 
-#conty{
+#conty {
     height: 200px;
     box-shadow: 5px 5px;
 }
 
-#butt{
+#butt {
     margin-top: 50px;
     height: 40px;
     position: relative;
     right: 10px;
 }
 
-.form-group h3{
+.form-group h3 {
     font-size: 40px;
 }
 
-.box{
-    border: 5px;;
+.box {
+    border: 5px solid black;
 }

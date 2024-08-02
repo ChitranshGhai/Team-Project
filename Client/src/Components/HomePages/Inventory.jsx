@@ -18,7 +18,7 @@ function RowColLayoutColWidthBreakpointExample() {
         <div className="row m-5 d-flex justify-content-center">
           <div className="col-sm-12 col-md-4 align-self-center">
             <Card
-              /* style={{ width: '22rem' }} */ className="rounded-0 border-0"
+              /* style={{ width: '22rem' }} */ className="rounded-0 border-0 CardBoxShadow"
               data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="1000"
@@ -26,11 +26,11 @@ function RowColLayoutColWidthBreakpointExample() {
               <Card.Img
                 variant="top"
                 src={SampleCandle}
-                className="rounded-0" /* style={{height:'420px', width:'370px'}} */
+                className="rounded-0 CardImg" /* style={{height:'420px', width:'370px'}} */
               />
-              <Card.Body className="text-center">
+              <Card.Body className="text-center textbackg">
                 {/* <Card.Title>Card Title</Card.Title> */}
-                <Card.Text style={{ fontSize: "25px" }}>
+                <Card.Text style={{ fontSize: "25px"}}>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </Card.Text>
@@ -39,7 +39,7 @@ function RowColLayoutColWidthBreakpointExample() {
           </div>
           <div className="col-sm-12 col-md-4 align-self-center">
             <Card
-              /* style={{ width: '22rem' }} */ className="rounded-0 border-0"
+              /* style={{ width: '22rem' }} */ className="rounded-0 border-0 CardBoxShadow"
               data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="1200"
@@ -47,9 +47,10 @@ function RowColLayoutColWidthBreakpointExample() {
               <Card.Img
                 variant="top"
                 src={SampleCandle}
-                className="rounded-0" /* style={{height:'420px', width:'370px'}} */
+                className="rounded-0 CardImg" /* style={{height:'420px', width:'370px'}} */
+
               />
-              <Card.Body className="text-center">
+              <Card.Body className="text-center textbackg">
                 {/* <Card.Title>Card Title</Card.Title> */}
                 <Card.Text style={{ fontSize: "25px" }}>
                   Some quick example text to build on the card title and make up
@@ -60,7 +61,7 @@ function RowColLayoutColWidthBreakpointExample() {
           </div>
           <div className="col-sm-12 col-md-4 align-self-center">
             <Card
-              /* style={{ width: '22rem'}} */ className="rounded-0 border-0"
+              /* style={{ width: '22rem'}} */ className="rounded-0 border-0 CardBoxShadow "
               data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="1400"
@@ -68,9 +69,9 @@ function RowColLayoutColWidthBreakpointExample() {
               <Card.Img
                 variant="top"
                 src={SampleCandle}
-                className="rounded-0" /* style={{height:'420px', width:'370px'}} */
+                className="rounded-0 CardImg" /* style={{height:'420px', width:'370px'}} */
               />
-              <Card.Body className="text-center">
+              <Card.Body className="text-center textbackg">
                 {/* <Card.Title>Card Title</Card.Title> */}
                 <Card.Text style={{ fontSize: "25px" }}>
                   Some quick example text to build on the card title and make up

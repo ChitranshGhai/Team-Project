@@ -10,6 +10,7 @@ import Gifts from "./Components/CollectionPages/Gifts";
 import ShopPage from "./Components/CollectionPages/ShopPage";
 import Login from "./Components/AccountPages/Login";
 import SignUp from "./Components/AccountPages/SignUp";
+import Cart from "./Components/Cart/Cart";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
             <Route path="/product" element={<ShopPage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/Cart" element={<Cart />} />
           </Routes>
         </ScrollToTop>
         <Footer />
