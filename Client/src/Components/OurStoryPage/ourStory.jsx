@@ -4,7 +4,7 @@ import candle1 from '../Images/candles.jpg'
 import './story.css';
 function OurStory() {
   return (
-    <div className='whole'>
+    <div>
     <div className="container">
     <div className="story">
         <h2>Our Story</h2>

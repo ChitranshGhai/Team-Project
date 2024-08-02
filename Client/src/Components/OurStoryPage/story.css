@@ -1,7 +1,6 @@
-.whole{
-    background-color:rgba(231, 232, 230, 0.917);
+#root{
+    background-color: #f4e7d7;
 }
-
 .container{
     padding-right: 10%;
     padding-left: 10%;
