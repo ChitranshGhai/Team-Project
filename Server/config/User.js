@@ -14,9 +14,17 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true,"Detail is required"]
     },
+    description:{
+        type: String,
+        required: [true,"Description is required"]
+    },
     image:{
         type: String,
         required: [true,"Image is required"]
+    },
+    additional:{
+        type: String,
+        required: [true,"Information required"]
     }
 })
 

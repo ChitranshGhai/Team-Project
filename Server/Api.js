@@ -5,7 +5,9 @@ const app = express();
 require("./config/dbConn");
 const user = require('./config/User');
 const cors = require('cors')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+// const { default: mongoose } = require('mongoose');
+const product = require('./config/User');
 // const findData = new user({
 //     "name": 5,
 //     "price":45000
@@ -24,17 +26,40 @@ app.get('/', async (req, res) => {
         console.log(chalk.inverse.yellow("No data found"))
     }
 })
+app.get('/getData/:id',async(req,res)=>{
+    try{
+        const prod = await product.findById(req.params.id)
+        if(!prod){
+            return res.status(404).send('Product not found')
+        }
+        res.json(prod)
+    }catch(err){
+        res.status(401).send('Error')
+    }
+    // const prod = await user.updateOne({_id:req.params.id},{$set:req.body})
+    // res.send(prod)
+})
 app.post('/product', async (req, res) => {
-    const { name, price, detail, image } = req.body;
+    const { name, price, detail, image, additional } = req.body;
     const newUser = new user({
         "name": name,
         "price": price,
         "detail": detail,
-        "image": image
+        "image": image,
+        "additional": additional
     })
     try {
         const saved = await newUser.save()
         res.send(saved)
+        // const { _id } = req.body
+        // if(!_id || !mongoose.Types.ObjectId.isValid(_id)){
+        //     return res.status(400).send('Invalid product ID')
+        // }
+        // const pro = await product.findById(_id)
+        // if(!pro){
+        //     return res.status(404).send('Product not found')
+        // }
+        // res.json(product)
     }
     catch (err) {
         console.log(chalk.inverse.red(err))

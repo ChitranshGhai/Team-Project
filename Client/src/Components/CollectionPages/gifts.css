@@ -140,14 +140,18 @@
 /* Media Querry For Responsiveness (NotWorking Currently) */  
   @media (max-width: 768px) {
     .col-3 {
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 0 0 75%;
+        max-width: 100%;
     }
   }
   
   @media (max-width: 576px) {
-    .col-3 {
+    /* .col-3 {
         flex: 0 0 100%;
         max-width: 100%;
+    } */
+    .image-wrapper{
+      padding: 2px;
+      margin: 5px;
     }
   }
