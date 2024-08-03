@@ -8,13 +8,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 // const { default: mongoose } = require('mongoose');
 const product = require('./config/User');
-// const findData = new user({
-//     "name": 5,
-//     "price":45000
-// })
-// findData.save().then(doc=>{
-//     console.log(doc)
-// })
+
 app.use(cors())
 app.use(bodyParser.json())
 app.get('/', async (req, res) => {
