@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, Link} from 'react-router-dom';
 import './shop_page.css';
 // import product from '../../../../Server/config/User';
 
@@ -12,7 +12,7 @@ export default function ShopPage() {
   const[product,setProduct] = useState(location.state?.product||null)
   const [products, setProducts] = useState([]);
   useEffect(() => {
-if(!product){
+if(!product || product._id !== id){
   fetchProd(id)
 }
     fetchData();
@@ -48,7 +48,9 @@ const relatedProducts = products.filter(p=>p._id !== product._id)
         <div className="content-wrap">
           <div className="side-area">
           {relatedProducts.slice(1,4).map((val) => (
+             <Link to={{pathname:`/product/${val._id}`, state:{product:val}}}>
             <img src={val.image} key={val._id} alt={val.name} className='firstimg' />
+            </Link>
           ))}
           </div>
 
@@ -80,6 +82,7 @@ const relatedProducts = products.filter(p=>p._id !== product._id)
           
 {relatedProducts.slice(1,5).map((val)=>(
   <div key={val._id} className='image-wrapper col-3'>
+    <Link to={{pathname:`/product/${val._id}`, state:{product:val}}}>
  <div key={val._id} className="image-inner-wrapper">
  <img src={val.image} alt="" className='product-image' />
 </div>
@@ -87,6 +90,7 @@ const relatedProducts = products.filter(p=>p._id !== product._id)
 <h2 className="product-title">Collection Name</h2>
 <p className="product-desc placeholder-glow">{val.detail}</p>
 <p className="product-price">Price: Rs. {val.price}</p>
+</Link>
 </div>
 ))}          
         </div>
