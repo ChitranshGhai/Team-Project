@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './shop_page.css';
+// import product from '../../../../Server/config/User';
 
 export default function ShopPage() {
   // const params = useParams()
