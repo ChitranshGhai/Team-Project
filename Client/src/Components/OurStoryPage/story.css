@@ -1,7 +1,8 @@
-#root{
+#root {
     background-color: #f4e7d7;
 }
-.container{
+
+.container {
     padding-right: 10%;
     padding-left: 10%;
     margin-left: 0px;
@@ -10,25 +11,33 @@
     align-content: center;
     border: 1px black;
 }
+
 .story {
     padding: 50px;
     text-align: center;
     padding: 35px 180px 6px;
     position: relative;
 }
-.story h1{
-    font-family: "Agbalumo";
-    font-size: 70px;
+
+.story h2 {
+    font-family: Dream-Avenue;
+    font-size: 60px;
+    font-weight: bold;
+    color: #803D3B;
 }
-.story p{
+
+.story p {
     box-sizing: content-box;
+    font-family: Dongle;
+    font-size: 33px;
 }
-.first img{
-    width:390px;
-    height: 500px;
+
+.first img {
+    width: 410px;
+    height: 550px;
     float: right;
     margin-right: 10%;
-    margin-left: 10%;
+    margin-left: 8%;
     margin-bottom: 2%;
     margin-top: 5%;
     border-radius: 5%;
@@ -36,47 +45,67 @@
     box-shadow: 5px 6px 11px black;
 
 }
-.para1{
+
+.para1 {
     /* align-content:space-between; */
     width: 70%;
-text-align: center;
-margin: 51px;
-margin-left: 12%;
-margin-top: 10%;
-padding-left: 6%;
-padding-right: 8%;
-padding-top: 5%;
-padding-bottom: 5%;
-font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-font-size: larger;
-box-shadow: 2px 4px 11px black;
-background-color: #ffffff;
+    text-align: left;
+    margin: 51px;
+    margin-left: 12%;
+    margin-top: 7%;
+    padding-left: 6%;
+    padding-right: 8%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-family: Dongle;
+    font-size: 25px;
+    line-height: 1;
+    box-shadow: 2px 4px 11px black;
+    background-color: #ffffff;
 }
-.second{
-    width:390px;
-    height: 500px;
+
+.para1 h1{
+    font-family: Dream-Avenue;
+    font-size: 40px;
+    font-weight: bold;
+    color: #803D3B;
+}
+
+.second {
+    width: 450px;
+    height: 620px;
     float: left;
     margin-right: 5%;
-    margin-left: 10%;
+    margin-left: 8%;
     margin-bottom: 2%;
     border-radius: 5%;
-    margin-top: 10%;
+    margin-top: 13%;
     border: 2cap black;
     box-shadow: 3px 1px 12px black;
 }
-.para2{
+
+.para2 {
     width: 75%;
-    font-family:Arbutus Slab;
-font-size: larger;
-text-align: center;
-margin: 51px;
-margin-left: 12%;
-margin-top: 19%;
-padding: 4%;
-padding-right: 8%;
-padding-left: 8%;
-padding-top: 5%; 
- padding-bottom: 5%;
-box-shadow: 2px 2px 6px black;
-background-color: #ffffff;
+    font-family: Dongle;
+    font-size: 25px;
+    text-align: left;
+    line-height: 1;
+    margin: 51px;
+    margin-left: 12%;
+    margin-top: 19%;
+    margin-bottom: 120px;
+    padding: 4%;
+    padding-right: 8%;
+    padding-left: 8%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    box-shadow: 2px 2px 6px black;
+    background-color: #ffffff;
+}
+
+.para2 h1{
+    font-family: Dream-Avenue;
+    font-size: 40px;
+    font-weight: bold;
+    color: #803D3B;
 }

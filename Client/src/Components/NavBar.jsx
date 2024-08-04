@@ -84,12 +84,6 @@ function NavBar() {
             ></i>
           </Link>
         )}
-        <Link to="/search">
-          <i
-            className="bi bi-search"
-            style={{ fontSize: 24, color: "lightsteelblue", paddingRight: 8 }}
-          ></i>
-        </Link>
         <Link to="/cart">
           <i
             className="bi bi-cart2"

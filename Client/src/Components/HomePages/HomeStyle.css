@@ -17,16 +17,16 @@
 /* Inventory-Section */
 /* View-All Button */
 #ViewAll-Button {
-    width: 300px;
+    width: 250px;
     height: 48px;
     margin: auto;
-    /* margin-top: -40px; */
     background-color: #3D2727;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-family: Dongle;
+    font-size: 32px;
     outline: none;
     border: 0;
     transition: all;
@@ -36,7 +36,7 @@
 
 /* Inventory View Button Hover */
 #ViewAll-Button:hover {
-    width: 330px;
+    width: 280px;
     height: 48px;
     background-color: #4F3333;
     box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
@@ -50,10 +50,16 @@
     margin-top: 70px;
     margin-bottom: -40px;
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Inventory-Heading h1{
+    font-family: Dream-Avenue;
+    font-size: 60px;
+    font-weight: bold;
+    color: #803D3B;
 }
 
 .Inve-Heading-Link {
@@ -79,6 +85,12 @@
     margin-top: 80px;
 }
 
+.Our-Story-main-Container h2{
+    font-family: Dream-Avenue;
+    font-size: 60px;
+    font-weight: bold;
+    color: #803D3B;
+}
 
 /* OurStory-Content-Div */
 .OurStory-Para {
@@ -91,7 +103,8 @@
 
 /* OurStory Paragraph */
 #OurStory-Para {
-    font-size: x-large;
+    font-family: Dongle;
+    font-size: 40px;
     text-align: left;
     padding: 10px;
     padding-top: 75px;
@@ -102,6 +115,32 @@
     width: 100%;
     max-width: 600px;
     height: auto;
+}
+
+#OurStory-Button{
+    width: 290px;
+    height: 48px;
+    margin-left: 1px;
+    background-color: #3D2727;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    outline: none;
+    border: 0;
+    transition: all;
+    transition-duration: .15s;
+    transition-timing-function: linear;
+}
+
+#OurStory-Button:hover {
+    width: 310px;
+    height: 48px;
+    background-color: #4F3333;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+    border: .5px solid black;
 }
 
 /* Media Querry For Our-Story Section */
@@ -124,10 +163,16 @@
     width: 100%;
     margin-bottom: -30px;
     margin-top: 70px;
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Social-Heading h1{
+    font-family: Dream-Avenue;
+    font-size: 60px;
+    font-weight: bold;
+    color: #803D3B;
 }
 
 /* Social-Main-Div */
