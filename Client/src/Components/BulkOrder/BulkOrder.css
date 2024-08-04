@@ -1,9 +1,9 @@
-#root{
+/* #root{
     background-color: #f4e7d7;
 }
 
 .MainForm{
-    border: 2px solid black;
+    border: 2px solid black; 
     margin-top: 40px;
     margin-bottom: 40px;
     margin-left: 30%;
@@ -11,11 +11,140 @@
     flex-direction: column;
     padding: 20px;
     width: 38%;
+    height:30%;
     text-align: center;
     align-self: center;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .HeaderClass{
     text-align: center;
     margin-top: 40px;
+} */
+
+/* BulkOrder.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color:#f4e7d7 ;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .FullPage {
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 30px;
+    background:#f4e7d7;
+    border: 2px solid black;
+  }
+  
+  .HeaderClass {
+    margin-left: 40px;
+    text-align: center;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  
+  .HeaderClass h2 {
+    color: #2c3e50;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-left: 350px;
+  }
+  
+  .HeaderClass p {
+    font-size: 20px;
+    color: #7f8c8d;
+    margin-left: 350px;
+  }
+  
+  
+  .MainForm {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    max-width: 700px;
+    width: 100%;
+    margin-left: 80px;
+  }
+
+  
+  .MainForm h2 {
+    color: #34495e;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .ContactInfo span {
+    font-size: 1.2rem;
+    color: #16a085;
+    display: block;
+    margin-bottom: 7px;
+    text-align: center;
+  }
+
+  .ContactInfo label{
+    margin-top: 8px;
+  }
+  
+  .Specifics {
+    margin: 10px 0 5px;
+    color: #2c3e50;
+  }
+
+  .Specifics ul{
+    list-style: none;
+  }
+   
+  .Specifics h5{
+    margin-top: 20px;
+  }
+  
+  input[type="text"], 
+  input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+  }  
+ #btn{
+  padding: 7px 20px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+ }
+
+ #btn2{
+  padding: 7px 20px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+ }
+
+ #btn:hover{
+  background-color: #444;
+ }
+
+ #btn2:hover{
+  background-color: #444;
+ }
+
+
+.Requests{
+  margin-bottom: 10px;
+}
+
+span{
+  margin: auto;
 }

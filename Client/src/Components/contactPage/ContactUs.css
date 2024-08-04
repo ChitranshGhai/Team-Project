@@ -127,3 +127,11 @@ body {
 .box {
     border: 5px solid black;
 }
+
+.textarea-placeholder::placeholder{
+    color: gray;
+}
+
+.input-placeholder::placeholder{
+    color: gray;
+}

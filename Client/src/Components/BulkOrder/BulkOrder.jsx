@@ -2,16 +2,11 @@ import React from 'react'
 import "./BulkOrder.css"
 function  BulkOrder() {
   return (
+<div>
     <div className='FullPage'>
-      <div className='HeaderClass'>
-        <h2>Bulk Order Inquiry </h2>
-        <p>Please use this form to get in touch with our team for a
-           quote on bulk or custom orders
-        </p>
-      </div>  
        <div className='MainForm'>
-        <h3>Bulk order Inquiry</h3>
-        <div className='ContactInfo'>
+        <h2>Bulk order Inquiry</h2>
+       <div className='ContactInfo'>
         <span>Contact info</span>
         <br/>
         <label htmlFor="name">Name*</label><br/>
@@ -30,16 +25,20 @@ function  BulkOrder() {
                 <input type="text" id="city" name="city" required />
         <br/>        
       </div>
-      <hr/>
       <div className='Specifics'>
-              <div className="Quantity">Order Quantity*</div>
-                <label><input type="radio" name="quantity" value="100-200" required /> 50-100</label>
-                <label><input type="radio" name="quantity" value="200-500" required /> 100-200</label>
-                <label><input type="radio" name="quantity" value="500-above" required /> 200 above</label>
+                <h5>Order Quantity*</h5>
+             <ul>
+              <li>   <input type="radio" name="quantity" value="100-200" required /> 50-100</li>
+              <li>  <input type="radio" name="quantity" value="200-500" required /> 100-200</li>
+                <li><input type="radio" name="quantity" value="500-above" required /> 200 above</li>
+             </ul>
+            
+                <h5>Design*</h5>
+                <ul>
+              <li>   <input type="radio" name="design" value="Sirimiri" required /> Sirimiri</li>
+              <li>  <input type="radio" name="design" value="customized" required /> Customized </li>
+             </ul>
 
-              <div className="Design">Design*</div>
-                <label><input type="radio" name="design" value="Sirimiri" required /> Srimiri hampers</label>
-                <label><input type="radio" name="design" value="customized" required /> Customized hampers</label>
       </div>
       <hr/>
       <div className='Designchosen'>
@@ -55,9 +54,10 @@ function  BulkOrder() {
       <label htmlFor="reqs">Additional Requests</label><br/>
       <input type="text" id="reqs" name="request" />
       </div>
-      <hr/>
+
       <button id='btn2'> submit</button>
     </div>  
+   </div>
    </div>
   )
 }
