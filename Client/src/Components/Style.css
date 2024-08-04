@@ -73,6 +73,15 @@
     width: 100%;
 }
 
+
+/* User Data CSS */
+#After-Login{
+    text-decoration: none;
+    color: white;
+    padding-right: 5px;
+}
+
+
 /* Nav-Bar-Icons */
 .Nav-Icons {
     height: 100%;

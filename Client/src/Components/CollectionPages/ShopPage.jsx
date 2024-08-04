@@ -24,7 +24,7 @@ const fetchProd = async(id)=>{
     setProduct(json)
   }catch(err){
     console.error('Error in fetching product')
-    navigate('/collection')
+    navigate('/Collections')
   }
 
 }

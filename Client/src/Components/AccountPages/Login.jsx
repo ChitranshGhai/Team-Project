@@ -8,6 +8,7 @@ import SideImage from "../Images/gift_candles.jpeg";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,7 +26,7 @@ function Login() {
       if (result.data === "Success") {
         navigate("/");
       } else {
-        alert(result.data);
+        setErrorMessage(result.data);
       }
     } catch (error) {
       console.error("There was an error with the fetch operation:", error);
@@ -48,6 +49,11 @@ function Login() {
             <div className="Main-Form">
                 <h2 style={{marginBottom:30}}>Log in to your account</h2>
                 <p style={{marginBottom:50}}>Don't Have an Account? <Link style={{color:"green"}} to='/SignUp'>Sign Up</Link></p>
+                {errorMessage && (
+                <div style={{ color: "red", marginBottom: 20 }}>
+                  {errorMessage}
+                </div>
+              )}
               <form method="post" autoComplete="off" onSubmit={handleSubmit} className="Form">
                 <p>
                 <input

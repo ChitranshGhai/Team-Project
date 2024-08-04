@@ -2,18 +2,18 @@ import React from "react";
 // import candle from "../Images/gift_candles.jpeg";
 // import candle1 from "../Images/gift2.jpg";
 import "../CollectionPages/gifts.css";
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function Gifts() {
-    useEffect(()=>{
-        fetchData()
-    })
-    const [products,setProducts] = useState([])
-    const fetchData =async()=>{
-        let res = await fetch('http://localhost:3388/')
-        let json= await res.json()
-        setProducts(json)
-    }
+  useEffect(() => {
+    fetchData();
+  });
+  const [products, setProducts] = useState([]);
+  const fetchData = async () => {
+    let res = await fetch("http://localhost:3388/");
+    let json = await res.json();
+    setProducts(json);
+  };
   return (
     <>
       {/* Heading Of Collection Section */}
@@ -80,20 +80,19 @@ export default function Gifts() {
           {/* All Data In this div Every candel Information */}
           <div className="image-container">
             {/* One Candel Information In This Div */}
-            {products.map((val)=>(
-<div key={val._id} className='image-wrapper col-3'>
-        <Link to={{pathname:`/product/${val._id}`, state:{val}}}>
-            <div className="image-inner-wrapper">
-        <img src={val.image} alt="" className='product-image'/>
-            </div>   
-                
-        <h2 className="product-title">Collection Name</h2>
-        <p className="product-desc placeholder-glow">{val.detail}</p>
-        <p className="product-price">{val.price}</p>
-        </Link>
- </div>
-            )
-        )}
+            {products.map((val) => (
+              <div key={val._id} className="image-wrapper col-3">
+                <Link to={{ pathname: `/product/${val._id}`, state: { val } }}>
+                  <div className="image-inner-wrapper">
+                    <img src={val.image} alt="" className="product-image" />
+                  </div>
+
+                  <h2 className="product-title">Collection Name</h2>
+                  <p className="product-desc placeholder-glow">{val.detail}</p>
+                  <p className="product-price">{val.price}</p>
+                </Link>
+              </div>
+            ))}
             {/* </div>
 
             <div className="image-wrapper col-3">

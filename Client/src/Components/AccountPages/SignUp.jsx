@@ -1,92 +1,122 @@
-import { useState } from "react"
-import {useNavigate} from "react-router-dom"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import SideImage from "../Images/gift_candles.jpeg";
 
 function SignUp() {
-  const [name,setName]=useState("")
-  const [email,setEmail]=useState("")
-  const [phone,setPhone]=useState("")
-  const [password,setpassword]=useState("")
-  const navigate= useNavigate();
+  const loginwithgoogle = () => {
+    window.open("http://localhost:9998/auth/google/callback", "_self");
+  };
 
-  const handleSubmit=async(e)=>{
-    e.preventDefault()
-    console.log({name:name,email:email,phone:phone,password:password})
-    let result= await fetch('http://localhost:9998/api/SignUp',{
-      method:'post',
-      body: JSON.stringify({name,email,phone,password}),
-      headers:{
-        "Content-Type":"application/json"
-      }
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log({ name: name, email: email, password: password });
+    let result = await fetch("http://localhost:9998/api/SignUp", {
+      method: "post",
+      body: JSON.stringify({ name, email, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    result= await result.json()
-    if(result){
-      navigate("/Login")
-      console.log(result);
-    }
-    else{
-      alert("Please Fill All The Enteries");
-    }
+    result = await result.json();
+    const user = localStorage.setItem("user", JSON.stringify(result));
 
-  }
+    if (result) {
+      navigate("/Login");
+      console.log(result);
+    } else {
+      console.log("All Enteries Not Filled");
+    }
+  };
 
   return (
-    <div>
-      <form method="post" autoComplete="off" onSubmit={handleSubmit}>
-        <div className="SignUp-Main-container">
-          <img
-            className="SignUp-Logo"
-            src="https://i.pinimg.com/564x/19/ff/7e/19ff7e96eba588957d722382b7c84908.jpg"
-            alt="logo"
-          />
-          <p id="Heading">SIGN-UP</p>
+    /* Picture Div */
+    <div className="Outer-Picture-Div">
+      {/* Containing Margin */}
+      <div className="Container-Div">
+        {/* Spacing Div */}
+        <div className="Margin-Div">
+          {/* Image Div */}
+          <div className="Image-Div">
+            <img id="PreviewImage" src={SideImage} alt="PreviewImage" />
+          </div>
+          {/* Form Div */}
+          <div className="Form-Div">
+            <div className="Main-Form">
+              <h1 style={{ marginBottom: 10 }}>Create an account</h1>
+              <p style={{ marginBottom: 30 }}>
+                Have an Account?{" "}
+                <Link style={{ color: "green" }} to="/Login">
+                  Log In
+                </Link>
+              </p>
+              <form
+                method="post"
+                autoComplete="off"
+                onSubmit={handleSubmit}
+                className="Form"
+              >
+                <p>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    id="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    name="Name"
+                    required
+                    autoComplete="off"
+                  />
+                </p>
 
-          <input
-            className="Signup-UserName-Input"
-            type="text"
-            id="userName"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            name="userName"
-            required
-            placeholder="Username"
-          />
-          <input
-            className="Signup-Email-Input"
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            name="email"
-            required
-            placeholder="E-mail"
-          />
-          <input
-            className="Signup-Phone-Input"
-            type="tel"
-            id="number"
-            value={phone}
-            onChange={(e)=>setPhone(e.target.value)}
-            required
-            name="number"
-            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-            placeholder="Phone number"
-          />
-          <input
-            className="Signup-Password-Input"
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e)=>setpassword(e.target.value)}
-            id="password"
-            required
-            placeholder="Password"
-          />
-          <button id="SignUp-Btn" type="submit">
-            Create Account
-          </button>
-        </div>
-      </form>
-    </div>
+                <p>
+                  <input
+                    type="email"
+                    placeholder="E-Mail"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    name="Email"
+                    required
+                  />
+                </p>
+
+                <p>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
+                    name="Password"
+                    required
+                  />
+                </p>
+                <p>
+                  <input style={{ width: 20 }} type="checkbox" /> I agree to{" "}
+                  <Link style={{ color: "green" }}>Terms & Conditions</Link>
+                </p>
+                <button id="Sign-In-Btn" type="submit">
+                  Get Started
+                </button>
+                <button id="GoogleSignin-Btn" onClick={loginwithgoogle}>
+                  Continue with Google
+                </button>
+              </form>
+            </div>
+            {/* Main Form */}
+          </div>{" "}
+          {/* Form Div */}
+        </div>{" "}
+        {/* Margin Div */}
+      </div>{" "}
+      {/* Container Div */}
+    </div> /* Picture Div */
   );
 }
 

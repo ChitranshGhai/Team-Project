@@ -73,11 +73,9 @@
     align-items: start;
     justify-content: center;
 }
-
 .Form{
     width: 100%;
 }
-
 #Email,#Password{
     width: 100%;
     height: 5.5vh;
@@ -90,13 +88,9 @@
     margin-bottom: 8px;
     outline: none; 
 }
-
 #Email:focus,#Password:focus{
     box-shadow: 0 0 0 2px rgb(23, 207, 106);
 }
-
-
-
 #Sign-In-Btn{
     width: 100%;
     height: 5.5vh;
@@ -109,10 +103,10 @@
     font-weight:600;
     text-align: center;
 }
-
 #Sign-In-Btn:hover{
     box-shadow: 0 0 0 2px rgb(23, 207, 106);
 }
+
 
 
 ::placeholder{
@@ -123,66 +117,35 @@
 
 
 
+
 /* Sign-Up Form */
 
-.SignUp-Main-container{
-    width: 350px;
-    height: 650px;
-    background-color: #000035;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto; margin-top: 5vh;
+#email,#password,#Name{
+    width: 100%;
+    height: 5.5vh;
+    background-color: #637074;
     border-radius: 5px;
-}
-
-.Signup-UserName-Input, .Signup-Email-Input,/* .Signup-Date-Input */.Signup-Phone-Input,.Signup-Password-Input{
-    width: 80%;
-    height: 35px;
-    background-color: #000032;
-    border-radius: 0;
     border: none;
-    margin-top: 12px;
     color: white;
-    border-bottom: 1.8px solid  #a57fb2 ;
-    animation-name: backInLeft;
-}
-
-.Signup-UserName-Input, .Signup-Email-Input,/* .Signup-Date-Input */.Signup-Phone-Input,.Signup-Password-Input{
-    outline: none;
-    background-color: #000032;
-    color: white;
-    visibility: none; 
-}
-
-#SignUp-Btn{
-    width: 80%;
-    height: 35px;
-    margin-top: 12px;
-    border: 0px;
-    color: white;
-    border-radius: 3px;
-    background-color: #a57fb2;
-    animation-name: backInRight;
-}
-
-
-#Heading{
-    color: white;
-    font-family: sans-serif;
-    margin-top: 10px;
-    animation-name: backInRight;
-}
-
-.SignUp-Logo{
-    height: 130px;
-    width: 100px;
-    border-radius: 100%;
+    padding-left: 5px;
+    opacity: .4;
     margin-bottom: 5px;
-    animation-name: backInRight;
+    outline: none; 
 }
 
-/* input[type=date]::-webkit-calendar-picker-indicator {
-    filter: invert();
-} */
+#email:focus,#password:focus, #Name:focus{
+    box-shadow: 0 0 0 2px rgb(23, 207, 106);
+}
+
+#GoogleSignin-Btn{
+    width: 100%;
+    height: 5.5vh;
+    background-color: #637074;
+    border-radius: 5px;
+    margin-top: 25px;
+    border: none;
+    color: white;
+    font-size: larger;
+    font-weight:600;
+    text-align: center;
+}
