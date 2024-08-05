@@ -1,15 +1,11 @@
 const express = require('express');
 const chalk = require('chalk');
 const port = 3388;
-const app = express();
+const app1 = express();
 require("./config/dbConn");
 const user = require('./config/User');
 const cors = require('cors')
-const bodyParser = require('body-parser')
-
-
-
-
+const bodyParser = require('body-parser');
 // const findData = new user({
 //     "name": 5,
 //     "price":45000
@@ -17,9 +13,9 @@ const bodyParser = require('body-parser')
 // findData.save().then(doc=>{
 //     console.log(doc)
 // })
-app.use(cors())
-app.use(bodyParser.json())
-app.get('/', async (req, res) => {
+app1.use(cors())
+app1.use(bodyParser.json())
+app1.get('/', async (req, res) => {
     const getData = await user.find()
     if (getData.length > 0) {
         res.send(getData)
@@ -28,27 +24,39 @@ app.get('/', async (req, res) => {
         console.log(chalk.inverse.yellow("No data found"))
     }
 })
-app.get('/getData/:id', async (req, res) => {
-    try {
+// app1.get('/getData/:id', async (req, res) => {
+//     try {
+//         const prod = await user.findById(req.params.id)
+//         if (!prod) {
+//             return res.status(404).send('Product not found')
+//         }
+//         res.json(prod)
+//     } catch (err) {
+//         res.status(401).send('Error')}}
+
+// )
+
+app1.get('/getData/:id', async(req,res)=>{
+    try{
         const prod = await user.findById(req.params.id)
-        if (!prod) {
-            return res.status(404).send('Product not found')
+        if(!prod){
+            return res.send('product not found')
         }
         res.json(prod)
-    } catch (err) {
-        res.status(401).send('Error')
+    }catch(err){
+        res.send(err.message)
+
     }
-    // const prod = await user.updateOne({_id:req.params.id},{$set:req.body})
-    // res.send(prod)
 })
-app.post('/product', async (req, res) => {
-    const { name, price, detail, image, additional } = req.body;
+app1.post('/product', async (req, res) => {
+    const { name, price, detail, image, additional, description } = req.body;
     const newUser = new user({
         "name": name,
         "price": price,
         "detail": detail,
         "image": image,
-        "additional": additional
+        "additional": additional,
+        "description":description
     })
     try {
         const saved = await newUser.save()
@@ -67,14 +75,16 @@ app.post('/product', async (req, res) => {
         console.log(chalk.inverse.red(err))
     }
 })
-app.put('/product/:_id', async (req, res) => {
+
+app1.put('/product/:_id',async(req,res)=>{
+
     let use = await user.updateOne(
         { _id: req.params._id },
         { $set: req.body }
     )
     res.send(use)
 })
-app.delete('/product/:_id', async (req, res) => {
+app1.delete('/product/:_id', async (req, res) => {
     const id = req.params.id
     try {
         const result = await user.deleteOne({ _id: id })
@@ -87,7 +97,7 @@ app.delete('/product/:_id', async (req, res) => {
         res.send({ err: `Error found` })
     }
 })
-app.listen(port, (err) => {
+app1.listen(port, (err) => {
     if (err) {
         console.log(chalk.inverse.red("Something went wrong!"))
     }

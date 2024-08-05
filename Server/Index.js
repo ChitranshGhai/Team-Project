@@ -1,17 +1,18 @@
 const express = require("express");
 const port = 9998;
 const app = express();
-require("./DbConn/Conn");
-const customer = require("./DbConn/User");
+require("./config/dbConn");
+const customer = require("./config/User1");
 const cors = require("cors");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const session = require("express-session");
-
+// const connectDB = require('./config/dbConn')
+// const apiRouter = require('./Api')
 const clientid =
   "409808503130-pq2n4itufa5d43reguacsbrhg3agrknu.apps.googleusercontent.com";
 const clientsecret = "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";
-
+// connectDB()
 app.use(cors({
     origin: 'http://localhost:3000',
     methods: 'GET,POST',
@@ -92,16 +93,8 @@ app.get("/login/success", async(req,res)=>{
         res.status(400).json({message:"Failed Login"})
     }
 })
-
-
-//listening port
-app.listen(port, (err) => {
-  if (err) {
-    console.log("Something Went Wrong");
-  } else {
-    console.log(`Server is Running on ${port}`);
-  }
-});
+//use Api router
+// app.use('/api',apiRouter)
 
 //login api
 app.post("/api/Login", async (req, res) => {
@@ -132,5 +125,13 @@ app.post("/api/SignUp", async (req, res) => {
     res.send(save);
   } catch (err) {
     console.log(err);
+  }
+});
+//listening port
+app.listen(port, (err) => {
+  if (err) {
+    console.log("Something Went Wrong");
+  } else {
+    console.log(`Server is Running on ${port}`);
   }
 });
