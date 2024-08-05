@@ -31,22 +31,18 @@ export default function Gifts() {
               {/* Radio Button List */}
               <ul className="menu1">
                 <li>
-                  <input type="radio" name="" id="" /> Price Range 1
+                  <input type="radio" name="Price" /> Price Range 1
                 </li>
                 <li>
-                  <input type="radio" name="" id="" /> Price Range 2
+                  <input type="radio" name="Price" /> Price Range 2
                 </li>
                 <li>
-                  <input type="radio" name="" id="" /> Price Range 3
+                  <input type="radio" name="Price" /> Price Range 3
                 </li>
                 <li>
-                  <input type="radio" name="" id="" /> Price Range 4
+                  <input type="radio" name="Price" /> Price Range 4
                 </li>
               </ul>
-            </li>
-            {/* Aroma Li */}
-            <li>
-              <a href="#">Aromas</a>
             </li>
             {/* Candles Li */}
             <li>
