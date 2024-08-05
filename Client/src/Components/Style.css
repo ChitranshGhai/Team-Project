@@ -178,6 +178,7 @@
     display: flex;
     justify-content: space-evenly;
     padding: 20px;
+    padding-bottom: 10px;
     background-color: #291B1B;
     color: #fff;
     text-align: center;
@@ -199,7 +200,7 @@
 
 .Text-Logo-Footer img{ 
     width: 400px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .footer-section h3 {
@@ -321,4 +322,13 @@
 
 .back-to-top-section a:hover {
     background-color: #4F3333;
+}
+
+#Copyright{
+    background-color: #291B1B;
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+    padding-bottom: 10px;
 }

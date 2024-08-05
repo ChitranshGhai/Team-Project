@@ -23,9 +23,9 @@ function Footer() {
       </div>
       <div className="footer-section">
           <h3>Services</h3>
-          <p><a href="#">Exclusive Offers</a></p>
-          <p><a href="#">Corporate Sales</a></p>
-          <p><a href="#">Gifts</a></p>
+          <p><Link to="/">Exclusive Offers</Link></p>
+          <p><Link to="/BulkOrder">Corporate Sales</Link></p>
+          <p><Link to="/Collections">Gifts</Link></p>
       </div>
 
       </div>
@@ -36,7 +36,7 @@ function Footer() {
           <p><a href="#">My Orders</a></p>
           <p><a href="#">Policies</a></p>
           <p><Link to="/Faq">FAQ's</Link></p>
-          <p><a href="#">Help</a></p>
+          <p><Link to="/ContactUs">Help</Link></p>
       </div>
       <div className="footer-section newsletter-section">
           <h3>Sign Up For Our Newsletter</h3>
@@ -45,9 +45,9 @@ function Footer() {
               <button type="submit">&#8594;</button>
           </form>
       </div>
-
       </div>
       </footer>
+      <p id='Copyright'>© 2024 Sirimiri Candles</p>
     </div>
   )
 }

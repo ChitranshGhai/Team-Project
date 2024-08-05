@@ -51,6 +51,9 @@
   color: #333;
   font-size: 1.2rem;
 }
+.menu1{
+  list-style: none;
+}
 /* Radio Button List and Aroma, Candles, Fragnances List CSS */
 .menu1>li{
   margin-bottom: 5px;
