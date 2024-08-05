@@ -1,1 +1,25 @@
 #root{background-color: #f4e7d7;}
+
+.Mainfr button{
+    font-size: 30px;
+    font-family: Dongle;
+}
+
+.Mainfr h3{
+    margin-top: 20px;
+    font-family: Dream-Avenue;
+    font-size: 60px;
+    font-weight: bold;
+    color: #803D3B; 
+    text-align: center;
+}
+.container{
+    font-size: 18px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Mainfr{
+    width: 60%; 
+    margin-left: 20%;
+
+}
