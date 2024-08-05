@@ -28,14 +28,14 @@ app.get('/', async (req, res) => {
         console.log(chalk.inverse.yellow("No data found"))
     }
 })
-app.get('/getData/:id',async(req,res)=>{
-    try{
-        const prod = await product.findById(req.params.id)
-        if(!prod){
+app.get('/getData/:id', async (req, res) => {
+    try {
+        const prod = await user.findById(req.params.id)
+        if (!prod) {
             return res.status(404).send('Product not found')
         }
         res.json(prod)
-    }catch(err){
+    } catch (err) {
         res.status(401).send('Error')
     }
     // const prod = await user.updateOne({_id:req.params.id},{$set:req.body})
@@ -67,10 +67,10 @@ app.post('/product', async (req, res) => {
         console.log(chalk.inverse.red(err))
     }
 })
-app.put('/product/:_id',async(req,res)=>{
+app.put('/product/:_id', async (req, res) => {
     let use = await user.updateOne(
-        {_id: req.params._id},
-        {$set: req.body}
+        { _id: req.params._id },
+        { $set: req.body }
     )
     res.send(use)
 })

@@ -16,7 +16,7 @@ function  BulkOrder() {
                 <input type="text" id="orgy" name="organization" required />
         <br/>   
         <label htmlFor="Email">Email*</label><br/>
-                <input type="text" id="email" name="email" required />
+                <input type="text" id="email1" name="email" required />
         <br/>   
         <label htmlFor="phoneNumber">Name*</label><br/>
                 <input type="text" id="phone" name="phone_number" required />
@@ -42,20 +42,19 @@ function  BulkOrder() {
       </div>
       <hr/>
       <div className='Designchosen'>
-      <label htmlFor="DesignSection">Design</label><br/>
-        <button id='btn'> choose a file</button><br/>
         <p>
         To help us get a better understanding of your request, please upload any
         Logos and Graphics/Design Ideas or if you’ve had your own graphics
         designer / team create a mockup for us, that’s great!
         </p>
+        <button id='btn'> Choose a file</button><br/>
       </div>
       <div className='Requests'>
       <label htmlFor="reqs">Additional Requests</label><br/>
       <input type="text" id="reqs" name="request" />
       </div>
 
-      <button id='btn2'> submit</button>
+      <button id='btn'> Submit</button>
     </div>  
    </div>
    </div>

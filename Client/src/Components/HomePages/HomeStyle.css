@@ -34,6 +34,10 @@
     transition-timing-function: linear;
 }
 
+#ViewAllBtnLink{
+    text-decoration: none;
+}
+
 /* Inventory View Button Hover */
 #ViewAll-Button:hover {
     width: 280px;
@@ -126,12 +130,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
     font-size: 32px;
     outline: none;
     border: 0;
     transition: all;
     transition-duration: .15s;
     transition-timing-function: linear;
+}
+
+#OurStoryBtnLink{
+    text-decoration: none;
 }
 
 #OurStory-Button:hover {

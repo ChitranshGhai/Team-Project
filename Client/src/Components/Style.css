@@ -30,12 +30,10 @@
 }
 
 /* Nav-Bar-Logo */
-.Nav-Bar-Logo {
-    margin: 0;
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#Main-Logo {
+    width: 90px;
+    border: none;
+    margin-left: 5px;
 }
 
 /* Nav-Bar-List */
@@ -55,6 +53,7 @@
     list-style: none;
     font-family: Dongle;
     font-size: 38px;
+    line-height: 1;
     padding: 0;
     margin: 0;
 }
@@ -187,6 +186,20 @@
 .footer-section {
     flex: 1;
     padding: 10px;
+}
+
+/* Text Logo Styling */
+.Text-Logo-Footer{
+    display: flex;
+    background-color: #291B1B;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.Text-Logo-Footer img{ 
+    width: 400px;
+    margin-top: 10px;
 }
 
 .footer-section h3 {

@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -8,12 +7,7 @@ import SampleCandle from "../Images/sample.jpg";
 import "./HomeStyle.css";
 
 
-function RowColLayoutColWidthBreakpointExample() {
-  const navigate = useNavigate();
-  const toCollections = () => {
-    navigate('/Collections');
-  };
-  
+function RowColLayoutColWidthBreakpointExample() {  
   return (
     <>
       <div className="Inventory-Heading">
@@ -89,7 +83,7 @@ function RowColLayoutColWidthBreakpointExample() {
           </div>
         </div>
       </div>
-      <button onClick={toCollections} id="ViewAll-Button">View All</button>
+      <Link to="/Collections" id="ViewAllBtnLink"><button id="ViewAll-Button">View All</button></Link>
     </>
   );
 }

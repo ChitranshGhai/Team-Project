@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Style.css"
+import TextLogo from "./Images/SirimiriTextLogo.png"
 
 function Footer() {
   return (
     <div>
       <div className="back-to-top-section">
             <a href="#top">Back to top</a>
+      </div>
+      <div className='Text-Logo-Footer'>
+        <img src={TextLogo} alt="Logo"/>
       </div>
       <footer className='Footer'>
       <div className='media-1'>

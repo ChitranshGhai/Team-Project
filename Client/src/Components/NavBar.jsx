@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Style.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Logo from "./Images/SirimiriLogo.png"
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -35,9 +36,7 @@ function NavBar() {
       </div>
 
       {/* Nav-Bar-Logo */}
-      <h2 className="Nav-Bar-Logo">
-        <Link to="/">Logo</Link>
-      </h2>
+        <Link to="/"><img src={Logo} alt="Sirimiri" id="Main-Logo"/></Link>
 
       {/* Nav-Bar-List */}
       <div className="Nav-List">
