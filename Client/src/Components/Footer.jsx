@@ -1,9 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import "./Style.css"
 import TextLogo from "./Images/SirimiriTextLogo.png"
 
 function Footer() {
+  const location = useLocation();
+
+  const handleExclusiveOffersClick = (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
   return (
     <div>
       <div className="back-to-top-section">
@@ -23,9 +31,9 @@ function Footer() {
       </div>
       <div className="footer-section">
           <h3>Services</h3>
-          <p><Link to="/">Exclusive Offers</Link></p>
+          <p><Link to="/" onClick={handleExclusiveOffersClick}>Exclusive Offers</Link></p>
           <p><Link to="/BulkOrder">Corporate Sales</Link></p>
-          <p><Link to="/Collections">Gifts</Link></p>
+          <p><Link to="/Candles">Gifts</Link></p>
       </div>
 
       </div>

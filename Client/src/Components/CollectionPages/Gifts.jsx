@@ -17,7 +17,7 @@ export default function Gifts() {
   return (
     <>
       {/* Heading Of Collection Section */}
-      <h1 id="height1">Collections</h1>
+      <h1 id="height1">Candles</h1>
       {/* Main Container*/}
       <div className="page-container">
         {/* Filter Section in Left Side */}
