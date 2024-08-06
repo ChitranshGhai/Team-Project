@@ -72,11 +72,10 @@ function NavBar() {
       {/* Nav-Bar-Icons */}
       <div className="Nav-Icons">
         {Object.keys(userdata).length > 0 ? (
-          <Link id="After-Login" to="/SignUp">{userdata.
-            name
+          <Link id="After-Login" to="/SignUp">{userdata.name
             }</Link>
         ) : (
-          <Link to="/SignUp">
+          <Link to="/Login">
             <i
               className="bi bi-person"
               style={{ fontSize: 32, color: "lightsteelblue", paddingRight: 8 }}

@@ -6,6 +6,11 @@ import SideImage from "../Images/gift_candles.jpeg";
 
 
 function Login() {
+
+  const loginwithgoogle = () => {
+    window.open("http://localhost:9998/auth/google/callback", "_self");
+  };
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -59,7 +64,7 @@ function Login() {
                 <input
                   type="email"
                   placeholder="E-Mail"
-                  id="Email"
+                  id="mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   name="Email"
@@ -71,7 +76,7 @@ function Login() {
                 <input
                   type="password"
                   placeholder="Password"
-                  id="Password"
+                  id="Pass"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   name="Password"
@@ -82,6 +87,9 @@ function Login() {
                     <input style={{width: 20}} type='checkbox'/> I agree to <Link style={{color:"green"}}>Terms & Conditions</Link>
                 </p>
                 <button id="Sign-In-Btn" type="submit">Log In</button>
+                <button id="GoogleSignin-Btn" onClick={loginwithgoogle}>
+                  Continue with Google
+                </button>
               </form>
             </div>{/* Main Form */}
           </div> {/* Form Div */}

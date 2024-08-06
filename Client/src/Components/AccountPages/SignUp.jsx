@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import SideImage from "../Images/gift_candles.jpeg";
 
 function SignUp() {
-  const loginwithgoogle = () => {
-    window.open("http://localhost:9998/auth/google/callback", "_self");
-  };
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
@@ -103,9 +99,6 @@ function SignUp() {
                 </p>
                 <button id="Sign-In-Btn" type="submit">
                   Get Started
-                </button>
-                <button id="GoogleSignin-Btn" onClick={loginwithgoogle}>
-                  Continue with Google
                 </button>
               </form>
             </div>

@@ -42,7 +42,7 @@ passport.use(
       scope: ["profile", "email"],
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
+      /* console.log(profile); */
       try {
         let user = await customer.findOne({ GoogleId: profile.id });
         if (!user) {
@@ -84,7 +84,7 @@ app.get(
 );
 
 app.get("/login/success", async(req,res)=>{
-    console.log(req.customer)
+   /*  console.log(req.customer) */
     
     if(req.user){
         res.status(200).json({message:"user Login",user:req.user})

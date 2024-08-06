@@ -1,54 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useParams, Link} from 'react-router-dom';
-import './shop_page.css';
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import "./shop_page.css";
 // import product from '../../../../Server/config/User';
 
 export default function ShopPage() {
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+  async function showRazorpay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+    const data = await fetch("http://localhost:2003/razorpay", {
+      method: "POST",
+    }).then((t) => t.json());
+    console.log(data);
+    const options = {
+      key: "rzp_test_4W26iQdHpqmXmZ",
+      currency: data.currency,
+      amount: data.amount.toString(),
+      order_id: data.id,
+      name: "Course Fee",
+      description: "Thank you for nothing. Please give us somemoney",
+      image: "http://localhost:2003/logo.svg",
+      handler: function (response) {
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        alert("Transaction successful");
+      },
+      prefill: {
+        name: "ainwik",
+        email: "ceo@ainwik.in",
+        phone_number: "9899876758",
+      },
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
+
   // const params = useParams()
   const [count, setCount] = useState(1);
-  const {id} = useParams()
-  const location = useLocation()
-  const navigate = useNavigate()
-  const[product,setProduct] = useState(location.state?.product||null)
+  const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(location.state?.product || null);
   const [products, setProducts] = useState([]);
   useEffect(() => {
-if(!product || product._id !== id){
-  fetchProd(id)
-}
-  },[id,product]);
-  useEffect(()=>{
+    if (!product || product._id !== id) {
+      fetchProd(id);
+    }
     fetchData();
-  })
-const fetchProd = async(id)=>{
-  // let res = await fetch(`http://localhost:3388/getData/${id}`)
-  //   let json = await res.json()
-  //   setProduct(json)
-  try{
-    let res = await fetch(`http://localhost:3388/getData/${id}`)
-    let json = await res.json()
-    setProduct(json)
-  }catch(err){
-    console.error('Error in fetching product')
-    navigate('/Collections')
-  }
-}
+  }, [id, product]);
+  const fetchProd = async (id) => {
+    try {
+      let res = await fetch(`http://localhost:3388/getData/${id}`);
+      let json = await res.json();
+      setProduct(json);
+    } catch (err) {
+      console.error("Error in fetching product");
+      navigate("/Collections");
+    }
+  };
   const fetchData = async () => {
     try {
-      let res = await fetch('http://localhost:3388/');
+      let res = await fetch("http://localhost:3388/");
       let js = await res.json();
       setProducts(js);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
-  }
+  };
   if (!product) {
     return <div>Loading...</div>;
   }
-const relatedProducts = products.filter(p=>p._id !== product._id)
+  const relatedProducts = products.filter((p) => p._id !== product._id);
   return (
-    <div id='whole'>
-     
-      <div id='container'>
+    <div id="whole">
+      <div id="container">
         <div className="content-wrap">
           <div className="side-area" key={product._id}>
           {/* {relatedProducts.slice(1,4).map((val) => (
@@ -64,9 +107,9 @@ const relatedProducts = products.filter(p=>p._id !== product._id)
           </div>
 
           <div className="main-content">
-            <img src={product.image} alt={product.name} className='main' />
+            <img src={product.image} alt={product.name} className="main" />
             <div className="content">
-              <h1 className='product-name'>{product.name || 'CANDLE NAME'}</h1>
+              <h1 className="product-name">{product.name || "CANDLE NAME"}</h1>
               <p className="product-price">Rs. {product.price}</p>
               <p className="product-desc">{product.description}</p>
                 {
@@ -79,7 +122,9 @@ const relatedProducts = products.filter(p=>p._id !== product._id)
               </div>
               <div className="button-group">
                 <button className="add-to-cart">ADD TO CART</button>
-                <button className="buy-now">BUY NOW</button>
+                <button className="buy-now" onClick={showRazorpay}>
+                  BUY NOW
+                </button>
               </div>
             </div>
           </div>
@@ -107,4 +152,3 @@ const relatedProducts = products.filter(p=>p._id !== product._id)
     </div>
   );
 }
-
