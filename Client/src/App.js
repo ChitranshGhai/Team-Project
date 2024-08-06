@@ -13,7 +13,6 @@ import SignUp from "./Components/AccountPages/SignUp";
 import Faq from "./Components/FaqPage/Faq";
 import BulkOrder from "./Components/BulkOrder/BulkOrder";
 import Cart from "./Components/Cart/Cart";
-import LoadScript from "./Components/PaymentRazor/LoadScript";
 function App() {
   return (
     <>
@@ -31,7 +30,6 @@ function App() {
             <Route path='/Faq' element={<Faq/>}></Route>
             <Route path='/BulkOrder' element={<BulkOrder/>}></Route>
             <Route path="/Cart" element={<Cart />} />
-            <Route path="/LoadScript" element={<LoadScript />} />
           </Routes>
         </ScrollToTop>
         <Footer />

@@ -1,107 +1,157 @@
 const express = require('express');
 const chalk = require('chalk');
-const port = 3388;
-const app1 = express();
+const mongoose= require('mongoose')
+const Razorpay = require("razorpay");
+const shortid = require("shortid");
+const crypto = require("crypto");
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const path = require("path");
+require("dotenv").config();
 require("./config/dbConn");
 const user = require('./config/User');
-const cors = require('cors')
-const bodyParser = require('body-parser');
-// const findData = new user({
-//     "name": 5,
-//     "price":45000
-// })
-// findData.save().then(doc=>{
-//     console.log(doc)
-// })
-app1.use(cors())
-app1.use(bodyParser.json())
-app1.get('/', async (req, res) => {
-    const getData = await user.find()
-    if (getData.length > 0) {
-        res.send(getData)
-    }
-    else {
-        console.log(chalk.inverse.yellow("No data found"))
-    }
-})
-// app1.get('/getData/:id', async (req, res) => {
-//     try {
-//         const prod = await user.findById(req.params.id)
-//         if (!prod) {
-//             return res.status(404).send('Product not found')
-//         }
-//         res.json(prod)
-//     } catch (err) {
-//         res.status(401).send('Error')}}
 
-// )
+const app = express();
+const PORT = process.env.PORT || 1337;
 
-app1.get('/getData/:id', async(req,res)=>{
-    try{
-        const prod = await user.findById(req.params.id)
-        if(!prod){
-            return res.send('product not found')
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// User routes
+app.get('/', async (req, res) => {
+    try {
+        const getData = await user.find();
+        if (getData.length > 0) {
+            res.send(getData);
+        } else {
+            res.status(404).send("No data found");
         }
-        res.json(prod)
-    }catch(err){
-        res.send(err.message)
-
+    } catch (error) {
+        res.status(500).send(error.message);
     }
-})
-app1.post('/product', async (req, res) => {
+});
+
+/* Product Page Api */
+app.get('/getData/:id', async (req, res) => {
+    try {
+        const prod = await user.findById(req.params.id);
+        if (!prod) {
+            return res.status(404).send('Product not found');
+        }
+        res.json(prod);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+app.post('/product', async (req, res) => {
     const { name, price, detail, image, additional, description } = req.body;
     const newUser = new user({
-        "name": name,
-        "price": price,
-        "detail": detail,
-        "image": image,
-        "additional": additional,
-        "description":description
-    })
-    try {
-        const saved = await newUser.save()
-        res.send(saved)
-        // const { _id } = req.body
-        // if(!_id || !mongoose.Types.ObjectId.isValid(_id)){
-        //     return res.status(400).send('Invalid product ID')
-        // }
-        // const pro = await product.findById(_id)
-        // if(!pro){
-        //     return res.status(404).send('Product not found')
-        // }
-        // res.json(product)
-    }
-    catch (err) {
-        console.log(chalk.inverse.red(err))
-    }
-})
+        name,
+        price,
+        detail,
+        image,
+        additional,
+        description
+    });
 
-app1.put('/product/:_id',async(req,res)=>{
-
-    let use = await user.updateOne(
-        { _id: req.params._id },
-        { $set: req.body }
-    )
-    res.send(use)
-})
-app1.delete('/product/:_id', async (req, res) => {
-    const id = req.params.id
     try {
-        const result = await user.deleteOne({ _id: id })
+        const saved = await newUser.save();
+        res.send(saved);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+app.put('/product/:_id', async (req, res) => {
+    try {
+        const updatedUser = await user.updateOne(
+            { _id: req.params._id },
+            { $set: req.body }
+        );
+        res.send(updatedUser);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+app.delete('/product/:_id', async (req, res) => {
+    try {
+        const result = await user.deleteOne({ _id: req.params._id });
         if (!result) {
-            return res.send("Product not Found")
+            return res.status(404).send("Product not found");
         }
-        return res.send("Product deleted successfully")
+        res.send("Product deleted successfully");
+    } catch (err) {
+        res.status(500).send(err.message);
     }
-    catch (err) {
-        res.send({ err: `Error found` })
+});
+
+
+
+
+// Razorpay configuration
+var razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
+
+/* app.get("/logo.svg", (req, res) => {
+    res.sendFile(path.join(__dirname, "logo.svg"));
+}); */
+
+app.post("/verification", (req, res) => {
+    const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
+    const shasum = crypto.createHmac("sha256", secret);
+    shasum.update(JSON.stringify(req.body));
+    const digest = shasum.digest("hex");
+
+    if (digest === req.headers["x-razorpay-signature"]) {
+        res.status(200).json({ message: "OK" });
+    } else {
+        res.status(403).json({ message: "Invalid" });
     }
-})
-app1.listen(port, (err) => {
-    if (err) {
-        console.log(chalk.inverse.red("Something went wrong!"))
+});
+
+app.post("/razorpay/:productId", async (req, res) => {
+    const { productId } = req.params;
+
+    // Check if productId is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+        return res.status(400).json({ message: "Invalid product ID" });
     }
-    else {
-        console.log(chalk.inverse.cyan(`server is running on ${port}`))
+
+    try {
+        const product = await user.findById(productId);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        const amount = product.price * 100; // convert to paisa
+        const payment_capture = 1;
+        const currency = "INR";
+        const options = {
+            amount,
+            currency,
+            receipt: shortid.generate(),
+            payment_capture,
+        };
+
+        const response = await razorpay.orders.create(options);
+        res.status(200).json({
+            id: response.id,
+            currency: response.currency,
+            amount: response.amount,
+        });
+    } catch (err) {
+        console.error(`Error creating Razorpay order: ${err}`); // Log the error for debugging
+        res.status(500).json({ message: "Something went wrong" });
     }
-})
+});
+
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Listening on ${PORT}`);
+});

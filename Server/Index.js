@@ -96,6 +96,7 @@ app.get("/login/success", async(req,res)=>{
 //use Api router
 // app.use('/api',apiRouter)
 
+
 //login api
 app.post("/api/Login", async (req, res) => {
   const { email, password } = req.body;
@@ -116,6 +117,7 @@ app.post("/api/Login", async (req, res) => {
   }
 });
 
+
 //signup api
 app.post("/api/SignUp", async (req, res) => {
   const obj = req.body;
@@ -127,6 +129,7 @@ app.post("/api/SignUp", async (req, res) => {
     console.log(err);
   }
 });
+
 //listening port
 app.listen(port, (err) => {
   if (err) {

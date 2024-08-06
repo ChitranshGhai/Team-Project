@@ -10,7 +10,7 @@ export default function Gifts() {
   });
   const [products, setProducts] = useState([]);
   const fetchData = async () => {
-    let res = await fetch("http://localhost:3388/");
+    let res = await fetch("http://localhost:2003/");
     let json = await res.json();
     setProducts(json);
   };
