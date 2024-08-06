@@ -42,7 +42,7 @@ function Footer() {
       <div className="footer-section">
           <h3>Orders</h3>
           <p><a href="#">My Orders</a></p>
-          <p><a href="#">Policies</a></p>
+          <p><Link to="/TermsandCon">Terms & Conditions</Link></p>
           <p><Link to="/Faq">FAQ's</Link></p>
           <p><Link to="/ContactUs">Help</Link></p>
       </div>
