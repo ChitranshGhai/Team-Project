@@ -1,73 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
-import "./shop_page.css";
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate, useParams, Link} from 'react-router-dom';
+import './shop_page.css';
+import {toast,ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function ShopPage() {
-  function loadScript(src) {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
-    });
-  }
-
-  async function showRazorpay(productId) {
-    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-    if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
-
-    try {
-      const response = await fetch(`http://localhost:2003/razorpay/${productId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP error! status: ${response.status}, details: ${errorText}`);
-      }
-
-      const data = await response.json();
-
-      if (!data || !data.amount || !data.currency || !data.id) {
-        throw new Error("Invalid response data");
-      }
-
-      const options = {
-        key: "rzp_test_4W26iQdHpqmXmZ",
-        currency: data.currency,
-        amount: data.amount.toString(),
-        order_id: data.id,
-        name: "Product Purchase",
-        description: "Thank you for your purchase",
-     /*    image: "http://localhost:2003/logo.svg", */
-        handler: function (response) {
-          alert("Transaction successful");
-        },
-        prefill: {
-          name: "ainwik",
-          email: "ceo@ainwik.in",
-          phone_number: "9899876758",
-        },
-      };
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
-    } catch (error) {
-      console.error("Error in fetch:", error);
-      alert("Failed to create Razorpay order");
-    }
-  }
-
+  const [cartItems, setCartItems] = useState(()=>{
+    const savedCart = localStorage.getItem('cartItems')
+    return savedCart ? JSON.parse(savedCart) : []
+  })
   const [count, setCount] = useState(1);
   const { id } = useParams();
   const location = useLocation();
@@ -92,7 +33,6 @@ export default function ShopPage() {
       navigate("/Collections");
     }
   };
-
   const fetchData = async () => {
     try {
       let res = await fetch("http://localhost:2003/");
@@ -103,22 +43,85 @@ export default function ShopPage() {
     }
   };
 
+  const addItemToCart = (product) => {
+    const existingItem = cartItems.find(item => item._id === product._id)
+    if(existingItem){
+      const updateItem = cartItems.map(item=>
+        item._id === product._id ? {...item,quantity: item.quantity+product.quantity}:item
+        )
+        setCartItems(updateItem)
+        localStorage.setItem('cartItems',JSON.stringify(updateItem))
+    }else{
+      const updateItem = [...cartItems,{...product,quantity: count}]
+      setCartItems(updateItem)
+      localStorage.setItem('cartItems',JSON.stringify(updateItem))
+    }
+    toast.success('Item added to cart')
+  }
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+  async function showRazorpay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+      );
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+    const data = await fetch("http://localhost:2003/razorpay", {
+      method: "POST",
+    }).then((t) => t.json());
+    console.log(data);
+    const options = {
+      key: "rzp_test_4W26iQdHpqmXmZ",
+      currency: data.currency,
+      amount: data.amount.toString(),
+      order_id: data.id,
+      name: "Course Fee",
+      description: "Thank you for nothing. Please give us somemoney",
+      image: "http://localhost:2003/logo.svg",
+      handler: function (response) {
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        alert("Transaction successful");
+      },
+      prefill: {
+        name: "ainwik",
+        email: "ceo@ainwik.in",
+        phone_number: "9899876758",
+      },
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
+
   if (!product) {
     return <div>Loading...</div>;
   }
-
   const relatedProducts = products.filter((p) => p._id !== product._id);
-
   return (
     <div id="whole">
+    <ToastContainer/>
       <div id="container">
         <div className="content-wrap">
           <div className="side-area" key={product._id}>
-            <Link to={{ pathname: `/product/${product._id}`, state: { product } }}>
-              <img src={product.image} key={product._id} alt={product.name} className="firstimg" />
-              <img src={product.image} key={product._id} alt={product.name} className="firstimg" />
-              <img src={product.image} key={product._id} alt={product.name} className="firstimg" />
-            </Link>
+          <Link to={{pathname:`/product/${product._id}`, state:{product}}}>
+           <img src={product.image} key={product._id} alt={product.name} className='firstimg' />
+           <img src={product.image} key={product._id} alt={product.name} className='firstimg' />
+           <img src={product.image} key={product._id} alt={product.name} className='firstimg' />
+           </Link>
           </div>
 
           <div className="main-content">
@@ -127,15 +130,17 @@ export default function ShopPage() {
               <h1 className="product-name">{product.name || "CANDLE NAME"}</h1>
               <p className="product-price">Rs. {product.price}</p>
               <p className="product-desc">{product.description}</p>
-              {count === 5 ? <p>Reached Maximum Limit !</p> : <p></p>}
+                {
+                  count===5?<p>Reached Maximum Limit !</p>:console.log("TT")
+                }
               <div className="counter">
-                <button onClick={() => { count === 0 ? setCount(0) : setCount(count - 1); }}>-</button>
-                <h3 className="height3">{count}</h3>
-                <button onClick={() => { count === 5 ? setCount(5) : setCount(count + 1); }}>+</button>
+                <button onClick={() => { count===0?setCount(0): setCount(count-1) }}>-</button>
+                <h3 className='height3'>{count}</h3>
+                <button onClick={() => { count===5?setCount(5):setCount(count + 1) }}>+</button>
               </div>
               <div className="button-group">
-                <button className="add-to-cart">ADD TO CART</button>
-                <button className="buy-now" onClick={() => showRazorpay(product._id)}>
+                <button className="add-to-cart" onClick={() => addItemToCart({...product, quantity: count})}>ADD TO CART</button>
+                <button className="buy-now" onClick={showRazorpay}>
                   BUY NOW
                 </button>
               </div>
@@ -146,20 +151,20 @@ export default function ShopPage() {
           <h4>Additional Information</h4>
           <p>{product.additional}</p>
         </div>
-        <h3 className="height">Related Products</h3>
-        <div className="related-prod">
-          {relatedProducts.slice(1, 5).map((val) => (
-            <div key={val._id} className="image-wrapper col-3">
-              <Link to={{ pathname: `/product/${val._id}`, state: { product: val } }}>
-                <div key={val._id} className="image-inner-wrapper">
-                  <img src={val.image} alt="" className="product-image" />
-                </div>
-                <h2 className="product-title">Collection Name</h2>
-                <p className="product-desc placeholder-glow">{val.detail}</p>
-                <p className="product-price">Price: Rs. {val.price}</p>
-              </Link>
-            </div>
-          ))}
+        <h3 className='height'>Related Products</h3>
+        <div className="related-prod">          
+{relatedProducts.slice(1,5).map((val)=>(
+  <div key={val._id} className='image-wrapper col-3'>
+    <Link to={{pathname:`/product/${val._id}`, state:{product:val}}}>
+ <div key={val._id} className="image-inner-wrapper">
+ <img src={val.image} alt="" className='product-image' />
+</div>
+<h2 className="product-title">Collection Name</h2>
+<p className="product-desc placeholder-glow">{val.detail}</p>
+<p className="product-price">Price: Rs. {val.price}</p>
+</Link>
+</div>
+))}          
         </div>
       </div>
     </div>

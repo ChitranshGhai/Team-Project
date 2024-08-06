@@ -1,5 +1,6 @@
-const express = require('express');
-const chalk = require('chalk');
+const express = require('express')
+const app = express();
+// const chalk = require('chalk');
 const mongoose= require('mongoose')
 const Razorpay = require("razorpay");
 const shortid = require("shortid");
@@ -11,7 +12,6 @@ require("dotenv").config();
 require("./config/dbConn");
 const user = require('./config/User');
 
-const app = express();
 const PORT = process.env.PORT || 1337;
 
 // Middleware
