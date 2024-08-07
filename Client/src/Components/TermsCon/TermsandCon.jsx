@@ -3,8 +3,9 @@ import './TermsandCon.css';
 
 function TermsConditions() {
   return (
-    <div className="terms-container">
+    <div className='Whole'>
       <h1>Terms & Conditions</h1>
+    <div className="terms-container">
       <h2 className="section-title">1. RETURNS</h2>
       <p>We are very sorry that you are not 100% satisfied with your purchase! however if there is a quality issue we will offer refund/replacement.</p>
       <p>We offer Returns and Exchanges for our candle products i.e.individual candles, solid candles, fragnant candles, candle jars  as per following rules:</p>
@@ -46,7 +47,7 @@ function TermsConditions() {
               and the details of your return request and we will do our best to make you happy.
        </p>
 
-       <h2 className='section-title'> PRIVACY POLICIES </h2>
+       <h2 className='section-title'>2. PRIVACY POLICIES </h2>
        <h3 className='subsection-title'> What information do we collect?</h3>
        <p> -When you interact with us, we automatically receive and store certain types of information, such as the content you view, the date and time that you view this content, the products you purchase, or your location information associated with your IP address.<br/>
          -We use the information we collect to serve you more relevant advertisements (referred to as “Retargeting”).<br/>
@@ -246,6 +247,7 @@ We will respond in 1-2 working days. Thank you for your patience.<br/>
 
 Note: Please mention your order number, if any, in the email along with the details of your request.
 </p>
+ </div>
  </div>
   );
 }
