@@ -16,15 +16,15 @@
     margin: 0;
     background-color: #f4e7d7;
   }
-.sidebar-toggle{
-  height: 10%;
-  padding: 0.3rem;
-  border: none;
-  width: 10rem;
-  font-weight: bolder;
-  display: none;
-}
-
+  .sidebar-toggle{
+    display: none;
+    height: 10%;
+    padding: 0.3rem;
+    border: none;
+    width: 5rem;
+    font-weight: bolder;
+    font-size: 2rem;
+  }
 /* Left Side Filter Section CSS */
 .sidebar{
   width: 300px;
@@ -151,6 +151,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: #333;
+    margin: auto;
   }
 
 /* Media Querry For Responsiveness (NotWorking Currently) */  
@@ -194,17 +195,18 @@ display: block;
     .dropdown:hover .menu {
       display: block;
     }
+    .sidebar-toggle{
+      height: 10%;
+      padding: 0.3rem;
+      border: none;
+      width: 5rem;
+      font-weight: bolder;
+      font-size: 2rem;
+      display: block;
+      margin: none;
+    }
   }
-  .sidebar-toggle{
-    height: 10%;
-    padding: 0.3rem;
-    border: none;
-    width: 5rem;
-    font-weight: bolder;
-    font-size: 2rem;
-    display: block;
-    margin: none;
-  }
+
   
   @media (max-width: 576px) {
     .sidebar{

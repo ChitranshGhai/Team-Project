@@ -48,6 +48,10 @@ export default function Gifts() {
     e.preventDefault()
     setFragranceFilter(fragrance)
   }
+  const clearFilters = () => {
+    setPriceFiter(null);
+    setFragranceFilter(null);
+  };
   const [sidebarOpen, setSidebar] = useState(false)
   const toggleSidebar = () =>{
     setSidebar(!sidebarOpen)
@@ -107,6 +111,9 @@ export default function Gifts() {
                   <button onClick={(e)=> handleFragranceFilter(e,'Jasmine')}>Jasmine</button>
                 </li>
               </ul>
+            </li>
+            <li>
+              <button onClick={clearFilters}>Clear Filters</button>
             </li>
           </ul>
         </aside>
