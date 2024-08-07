@@ -4,68 +4,107 @@ import React from "react";
 import "../CollectionPages/gifts.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+// import product from "../../../../Server/config/User";
 export default function Gifts() {
+  const [products, setProducts] = useState([]);
+  const [filterProduct,setFilterProduct] = useState([])
+  const [priceFilter, setPriceFiter] = useState(null)
+  const [fragranceFilter,setFragranceFilter] = useState(null)
   useEffect(() => {
     fetchData();
-  });
-  const [products, setProducts] = useState([]);
+  },[]);
+  useEffect(()=>{
+    applyFilter()
+  },[priceFilter,fragranceFilter,products])
   const fetchData = async () => {
     let res = await fetch("http://localhost:2003/");
     let json = await res.json();
     setProducts(json);
+    setFilterProduct(json);
   };
+  const applyFilter = () =>{
+    console.log('Apllying Filters', priceFilter, fragranceFilter)
+    let filtered = products
+
+    if(priceFilter){
+      filtered = filtered.filter(product => {
+        if (priceFilter === 'range1') return product.price <= 1000
+        if (priceFilter === 'range2') return product.price > 1000 && product.price <= 2000
+        if (priceFilter === 'range3') return product.price > 2000 && product.price <= 3000
+        if (priceFilter === 'range4') return product.price > 3000
+        return true
+      })
+    }
+    if (fragranceFilter) {
+      filtered = filtered.filter(product => 
+        product.detail.toLowerCase().includes(fragranceFilter.toLowerCase()))
+    }
+    setFilterProduct(filtered)
+  }
+  const handlePriceFilter = (e) =>{
+    setPriceFiter(e.target.value)
+  }
+  const handleFragranceFilter = (e,fragrance) =>{
+    e.preventDefault()
+    setFragranceFilter(fragrance)
+  }
+  const [sidebarOpen, setSidebar] = useState(false)
+  const toggleSidebar = () =>{
+    setSidebar(!sidebarOpen)
+  }
   return (
     <>
+       
       {/* Heading Of Collection Section */}
       <h1 id="height1">Candles</h1>
       {/* Main Container*/}
       <div className="page-container">
         {/* Filter Section in Left Side */}
-        <aside className="sidebar">
+        <button className="sidebar-toggle" onClick={toggleSidebar}> 
+        ☰ 
+        </button>
+        <aside className={`sidebar ${sidebarOpen ? 'show' : ' '}`}>
           {/* Heading Of Left side filter section */}
           <h3>FILTERS</h3>
           {/* Filter Section */}
           <ul className="filter-list">
             <li>
-              <a href="#">Price</a>
+              <span>Price</span>
               {/* Radio Button List */}
               <ul className="menu1">
                 <li>
-                  <input type="radio" name="Price" /> Price Range 1
+                  <input type="radio" name="Price" value="range1" onChange={handlePriceFilter}/>{" "} Less than ₹1000
                 </li>
                 <li>
-                  <input type="radio" name="Price" /> Price Range 2
+                  <input type="radio" name="Price" value="range2" onChange={handlePriceFilter}/>{" "} ₹1000 - ₹2000
                 </li>
                 <li>
-                  <input type="radio" name="Price" /> Price Range 3
+                  <input type="radio" name="Price" value="range3" onChange={handlePriceFilter}/>{" "} ₹2000 - ₹3000
                 </li>
                 <li>
-                  <input type="radio" name="Price" /> Price Range 4
+                  <input type="radio" name="Price" value="range4" onChange={handlePriceFilter}/>{" "} More than ₹3000
                 </li>
               </ul>
             </li>
             {/* Candles Li */}
-           {/*  <li>
+            {/* <li>
               <a href="#">Candles</a>
             </li> */}
             {/* Fragnaces Drop-Down On Hover */}
             <li className="dropdown">
-              <a href="#">Fragrances</a>
+              <span>Fragrances</span>
               <ul className="menu">
                 <li>
-                  <a href="#">Lavendar</a>
+                  <button onClick={(e) => handleFragranceFilter(e,'Lavendar')}>Lavendar</button>
                 </li>
                 <li>
-                  <a href="#">Rose</a>
+                  <button onClick={(e) => handleFragranceFilter(e,'Rose')}>Rose</button>
                 </li>
                 <li>
-                  <a href="#">Vanilla</a>
+                  <button onClick={(e)=> handleFragranceFilter(e,'Vanilla')}>Vanilla</button>
                 </li>
                 <li>
-                  <a href="#">Jasmine</a>
-                </li>
-                <li>
-                  <a href="#">Bargamot</a>
+                  <button onClick={(e)=> handleFragranceFilter(e,'Jasmine')}>Jasmine</button>
                 </li>
               </ul>
             </li>
@@ -76,8 +115,8 @@ export default function Gifts() {
           {/* All Data In this div Every candel Information */}
           <div className="image-container">
             {/* One Candel Information In This Div */}
-            {products.map((val) => (
-              <div key={val._id} className="image-wrapper col-3">
+            {filterProduct.map((val) => (
+              <div key={val._id} className="image-wrapper">
                 <Link to={{ pathname: `/product/${val._id}`, state: {val} }}>
                   <div className="image-inner-wrapper">
                     <img src={val.image} alt="" className="product-image" />
@@ -89,56 +128,6 @@ export default function Gifts() {
                 </Link>
               </div>
             ))}
-            {/* </div>
-
-            <div className="image-wrapper col-3">
-              <Link to={"/product"}>
-                <div className="image-inner-wrapper">
-                  <img src={candle} alt="" className="product-image" />
-                </div>
-              </Link>
-              <h2 className="product-title">Collection Name</h2>
-              <p className="product-desc placeholder-glow">Gift Set</p>
-              <p className="product-price">Price: Rs.2000</p>
-            </div>
-
-            <div className="image-wrapper col-3">
-              <Link to={"/product"}>
-                <div className="image-inner-wrapper">
-                  <img src={candle} alt="" className="product-image" />
-                </div>
-              </Link>
-              <h2 className="product-title">Collection Name</h2>
-              <p className="product-desc placeholder-glow">Gift Set</p>
-              <p className="product-price">Price: Rs.2000</p>
-            </div>
-
-            <div className="image-wrapper col-3">
-              <div className="image-inner-wrapper">
-                <img src={candle1} alt="" className="product-image" />
-              </div>
-              <h2 className="product-title">Collection Name</h2>
-              <p className="product-desc placeholder-glow">Gift Set</p>
-              <p className="product-price">Price: Rs.2000</p>
-            </div>
-
-            <div className="image-wrapper col-3">
-              <div className="image-inner-wrapper">
-                <img src={candle1} alt="" className="product-image" />
-              </div>
-              <h2 className="product-title">Collection Name</h2>
-              <p className="product-desc placeholder-glow">Gift Set</p>
-              <p className="product-price">Price: Rs.2000</p>
-            </div>
-
-            <div className="image-wrapper col-3">
-              <div className="image-inner-wrapper">
-                <img src={candle1} alt="" className="product-image" />
-              </div>
-              <h2 className="product-title">Collection Name</h2>
-              <p className="product-desc placeholder-glow">Gift Set</p>
-              <p className="product-price">Price: Rs.2000</p>
-            </div> */}
           </div>
         </div>
       </div>
