@@ -7,8 +7,6 @@ const cors = require("cors");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const session = require("express-session");
-// const connectDB = require('./config/dbConn')
-// const apiRouter = require('./Api')
 const clientid =
   "409808503130-pq2n4itufa5d43reguacsbrhg3agrknu.apps.googleusercontent.com";
 const clientsecret = "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";
@@ -50,6 +48,7 @@ passport.use(
             GoogleId: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
+            image: profile.photos[0].value
           });
           await user.save();
         }
@@ -93,8 +92,20 @@ app.get("/login/success", async(req,res)=>{
         res.status(400).json({message:"Failed Login"})
     }
 })
-//use Api router
-// app.use('/api',apiRouter)
+
+
+/* Logout Api */
+app.get("/logout",async (req,res)=>{
+  req.logout(function(error){
+     if(error){
+      return next(error)
+     }
+     else{
+      res.redirect("http://localhost:3000")
+     }
+  })
+})
+
 
 
 //login api

@@ -45,9 +45,9 @@ export default function Gifts() {
               </ul>
             </li>
             {/* Candles Li */}
-            <li>
+           {/*  <li>
               <a href="#">Candles</a>
-            </li>
+            </li> */}
             {/* Fragnaces Drop-Down On Hover */}
             <li className="dropdown">
               <a href="#">Fragrances</a>

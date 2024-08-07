@@ -18,7 +18,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     /* required: [true, "Password is Mandatory"] */
   },
-});
+  image:{
+    type: String
+  }
+},Timestamp=true);
 
 const Customers = mongoose.model("customers", UserSchema);
 module.exports = Customers;

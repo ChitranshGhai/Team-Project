@@ -33,13 +33,13 @@
 #Main-Logo {
     width: 90px;
     border: none;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 /* Nav-Bar-List */
 .Nav-List {
     height: 100%;
-    width: 800px;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -88,7 +88,15 @@
 #After-Login{
     text-decoration: none;
     color: white;
-    padding-right: 5px;
+    padding-right: 20px;
+}
+
+
+
+/* Google login profile picture CSS */
+#Google-Profile-Pic{
+    border-radius: 50%;
+    height: 45px;
 }
 
 
@@ -97,7 +105,7 @@
     height: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center;    
     margin-right: 20px;
 }
 

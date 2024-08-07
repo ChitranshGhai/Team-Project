@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
 import "./Style.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -7,25 +8,38 @@ function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [userdata, setUserData] = useState({});
-  console.log("response:" , userdata)
+  /* console.log("response:" , userdata) */
   const getUser = async () => {
     try {
       const result = await axios.get("http://localhost:9998/login/success", {
         withCredentials: true,
       });
+      localStorage.setItem("user", JSON.stringify(result));
       setUserData(result.data.user);
     } catch (error) {
-      console.log("error", error);
+      if (error.response && error.response.status === 400) {
+        console.error("User not logged in");
+      } else {
+        console.error("An error occurred");
+      }
     }
   };
 
   useEffect(() => {
     getUser();
-  }, []);
+  },[]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+
+  /* Logout Button */
+  const logout= ()=>{
+    localStorage.removeItem("user", JSON.stringify());
+    window.open("http://localhost:9998/logout", "_self")
+  }
+
   return (
     <nav className={`Nav-Main-Container ${menuOpen ? "active" : ""}`}>
       {/* Hamburger Icon */}
@@ -71,21 +85,30 @@ function NavBar() {
 
       {/* Nav-Bar-Icons */}
       <div className="Nav-Icons">
-        {Object.keys(userdata).length > 0 ? (
-          <Link id="After-Login" to="/SignUp">{userdata.name
-            }</Link>
+        {Object?.keys(userdata)?.length > 0 ? (
+          <Dropdown className="me-3">
+          <Dropdown.Toggle className="bg bg-transparent border"id="dropdown-basic">
+          <Link id="After-Login"><img id="Google-Profile-Pic" src={userdata?.image} alt="profile pic" /></Link>
+          </Dropdown.Toggle>
+    
+          <Dropdown.Menu variant="dark">
+            <Dropdown.Item href="#/action-1">Your Account</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Your Orders</Dropdown.Item>
+            <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         ) : (
           <Link to="/Login">
             <i
               className="bi bi-person"
-              style={{ fontSize: 32, color: "lightsteelblue", paddingRight: 8 }}
+              style={{ fontSize: 32, color: "lightsteelblue", paddingRight: 15 }}
             ></i>
           </Link>
         )}
         <Link to="/cart">
           <i
             className="bi bi-cart2"
-            style={{ fontSize: 28, color: "lightsteelblue", paddingRight: 8 }}
+            style={{ fontSize: 28, color: "lightsteelblue", paddingRight: 8}}
           ></i>
         </Link>
       </div>

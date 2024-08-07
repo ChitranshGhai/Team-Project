@@ -26,7 +26,7 @@ function SignUp() {
       navigate("/Login");
       console.log(result);
     } else {
-      console.log("All Enteries Not Filled");
+      return;
     }
   };
 

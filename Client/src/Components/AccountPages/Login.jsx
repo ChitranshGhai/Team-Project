@@ -29,6 +29,7 @@ function Login() {
 
       result = await result.json();
       if (result.data === "Success") {
+        localStorage.setItem("user", JSON.stringify(result));
         navigate("/");
       } else {
         setErrorMessage(result.data);
