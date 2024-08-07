@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express();
-// const chalk = require('chalk');
-const mongoose= require('mongoose')
+const mongoose = require('mongoose')
 const Razorpay = require("razorpay");
 const shortid = require("shortid");
 const crypto = require("crypto");
@@ -88,18 +87,11 @@ app.delete('/product/:_id', async (req, res) => {
     }
 });
 
-
-
-
 // Razorpay configuration
 var razorpay = new Razorpay({
     key_id: process.env.RAZORPAY_KEY_ID,
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
-
-/* app.get("/logo.svg", (req, res) => {
-    res.sendFile(path.join(__dirname, "logo.svg"));
-}); */
 
 app.post("/verification", (req, res) => {
     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
@@ -145,11 +137,10 @@ app.post("/razorpay/:productId", async (req, res) => {
             amount: response.amount,
         });
     } catch (err) {
-        console.error(`Error creating Razorpay order: ${err}`); // Log the error for debugging
+        console.error(`Error creating Razorpay order: ${err}`);
         res.status(500).json({ message: "Something went wrong" });
     }
 });
-
 
 // Start server
 app.listen(PORT, () => {

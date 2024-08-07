@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, useParams, Link} from 'react-router-dom';
-import './shop_page.css';
-import {toast,ToastContainer} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import "./shop_page.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ShopPage() {
-  const [cartItems, setCartItems] = useState(()=>{
-    const savedCart = localStorage.getItem('cartItems')
-    return savedCart ? JSON.parse(savedCart) : []
-  })
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("cartItems");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [count, setCount] = useState(1);
   const { id } = useParams();
   const location = useLocation();
@@ -44,20 +44,23 @@ export default function ShopPage() {
   };
 
   const addItemToCart = (product) => {
-    const existingItem = cartItems.find(item => item._id === product._id)
-    if(existingItem){
-      const updateItem = cartItems.map(item=>
-        item._id === product._id ? {...item,quantity: item.quantity+product.quantity}:item
-        )
-        setCartItems(updateItem)
-        localStorage.setItem('cartItems',JSON.stringify(updateItem))
-    }else{
-      const updateItem = [...cartItems,{...product,quantity: count}]
-      setCartItems(updateItem)
-      localStorage.setItem('cartItems',JSON.stringify(updateItem))
+    const existingItem = cartItems.find((item) => item._id === product._id);
+    if (existingItem) {
+      const updateItem = cartItems.map((item) =>
+        item._id === product._id
+          ? { ...item, quantity: item.quantity + product.quantity }
+          : item
+      );
+      setCartItems(updateItem);
+      localStorage.setItem("cartItems", JSON.stringify(updateItem));
+    } else {
+      const updateItem = [...cartItems, { ...product, quantity: count }];
+      setCartItems(updateItem);
+      localStorage.setItem("cartItems", JSON.stringify(updateItem));
     }
-    toast.success('Item added to cart')
-  }
+    toast.success("Item added to cart");
+  };
+
   function loadScript(src) {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -71,15 +74,16 @@ export default function ShopPage() {
       document.body.appendChild(script);
     });
   }
+
   async function showRazorpay() {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
-      );
-      if (!res) {
-        alert("Razorpay SDK failed to load. Are you online?");
+    );
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
-    const data = await fetch("http://localhost:2003/razorpay", {
+    const data = await fetch(`http://localhost:2003/razorpay/${product._id}`, {
       method: "POST",
     }).then((t) => t.json());
     console.log(data);
@@ -89,12 +93,9 @@ export default function ShopPage() {
       amount: data.amount.toString(),
       order_id: data.id,
       name: "Course Fee",
-      description: "Thank you for nothing. Please give us somemoney",
+      description: "Thank you for nothing. Please give us some money",
       image: "http://localhost:2003/logo.svg",
       handler: function (response) {
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature);
         alert("Transaction successful");
       },
       prefill: {
@@ -113,15 +114,32 @@ export default function ShopPage() {
   const relatedProducts = products.filter((p) => p._id !== product._id);
   return (
     <div id="whole">
-    <ToastContainer/>
+      <ToastContainer />
       <div id="container">
         <div className="content-wrap">
           <div className="side-area" key={product._id}>
-          <Link to={{pathname:`/product/${product._id}`, state:{product}}}>
-           <img src={product.image} key={product._id} alt={product.name} className='firstimg' />
-           <img src={product.image} key={product._id} alt={product.name} className='firstimg' />
-           <img src={product.image} key={product._id} alt={product.name} className='firstimg' />
-           </Link>
+            <Link
+              to={{ pathname: `/product/${product._id}`, state: { product } }}
+            >
+              <img
+                src={product.image}
+                key={product._id}
+                alt={product.name}
+                className="firstimg"
+              />
+              <img
+                src={product.image}
+                key={product._id}
+                alt={product.name}
+                className="firstimg"
+              />
+              <img
+                src={product.image}
+                key={product._id}
+                alt={product.name}
+                className="firstimg"
+              />
+            </Link>
           </div>
 
           <div className="main-content">
@@ -130,16 +148,31 @@ export default function ShopPage() {
               <h1 className="product-name">{product.name || "CANDLE NAME"}</h1>
               <p className="product-price">Rs. {product.price}</p>
               <p className="product-desc">{product.description}</p>
-                {
-                  count===5?<p>Reached Maximum Limit !</p>:console.log("TT")
-                }
+              {count === 5 ? <p>Reached Maximum Limit !</p> : <p></p>}
               <div className="counter">
-                <button onClick={() => { count===0?setCount(0): setCount(count-1) }}>-</button>
-                <h3 className='height3'>{count}</h3>
-                <button onClick={() => { count===5?setCount(5):setCount(count + 1) }}>+</button>
+                <button
+                  onClick={() => {
+                    count === 0 ? setCount(0) : setCount(count - 1);
+                  }}
+                >
+                  -
+                </button>
+                <h3 className="height3">{count}</h3>
+                <button
+                  onClick={() => {
+                    count === 5 ? setCount(5) : setCount(count + 1);
+                  }}
+                >
+                  +
+                </button>
               </div>
               <div className="button-group">
-                <button className="add-to-cart" onClick={() => addItemToCart({...product, quantity: count})}>ADD TO CART</button>
+                <button
+                  className="add-to-cart"
+                  onClick={() => addItemToCart({ ...product, quantity: count })}
+                >
+                  ADD TO CART
+                </button>
                 <button className="buy-now" onClick={showRazorpay}>
                   BUY NOW
                 </button>
@@ -151,20 +184,25 @@ export default function ShopPage() {
           <h4>Additional Information</h4>
           <p>{product.additional}</p>
         </div>
-        <h3 className='height'>Related Products</h3>
-        <div className="related-prod">          
-{relatedProducts.slice(1,5).map((val)=>(
-  <div key={val._id} className='image-wrapper col-3'>
-    <Link to={{pathname:`/product/${val._id}`, state:{product:val}}}>
- <div key={val._id} className="image-inner-wrapper">
- <img src={val.image} alt="" className='product-image' />
-</div>
-<h2 className="product-title">Collection Name</h2>
-<p className="product-desc placeholder-glow">{val.detail}</p>
-<p className="product-price">Price: Rs. {val.price}</p>
-</Link>
-</div>
-))}          
+        <h3 className="height">Related Products</h3>
+        <div className="related-prod">
+          {relatedProducts.slice(1, 5).map((val) => (
+            <div key={val._id} className="image-wrapper col-3">
+              <Link
+                to={{
+                  pathname: `/product/${val._id}`,
+                  state: { product: val },
+                }}
+              >
+                <div key={val._id} className="image-inner-wrapper">
+                  <img src={val.image} alt="" className="product-image" />
+                </div>
+                <h2 className="product-title">Collection Name</h2>
+                <p className="product-desc placeholder-glow">{val.detail}</p>
+                <p className="product-price">Price: Rs. {val.price}</p>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>

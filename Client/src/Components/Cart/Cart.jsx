@@ -43,14 +43,17 @@ export default function Cart() {
           </Link>
         </div>
       ) : (
-        <div className="cart-container">
+        <div className="cart-container2">
           <h1>Shopping Cart</h1>
           {cartItems.map((item) => (
             <div className="Product" key={item._id}>
-              <img src={item.image} alt="" />
+            
+              <img id="Products-Pic" src={item.image} alt="" />
+            
               <div className="ProductInfo">
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
+            
                 <div className="counter">
                   <button
                     onClick={() => updateQuantity(item._id, item.quantity - 1)}
@@ -64,7 +67,8 @@ export default function Cart() {
                     +
                   </button>
                 </div>
-                <div>
+            
+                <div className="For-Removing-Div">
                   <a href="" onClick={() => removeItem(item._id)}>
                     Remove
                   </a>
@@ -72,13 +76,20 @@ export default function Cart() {
                 <a href=''>See more like this</a>
                 <a href=''>Share</a> */}
                 </div>
+            
               </div>
-              <p id="Price">₹ {item.price}</p>
+
+              <div className="product-price">
+                <h2>Price</h2>
+              <p>₹ {item.price}</p>
+              </div>
+            
             </div>
           ))}
+          
           <div className="cart-total">
             <p>Total: ₹{totalAmount}</p>
-            <button className="checkout-button">Proceed to checkout</button>
+            <button id="checkout-button">Proceed to checkout</button>
           </div>
         </div>
       )}
