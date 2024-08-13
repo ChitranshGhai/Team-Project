@@ -2,6 +2,7 @@ const express = require("express");
 const port = 9998;
 const app = express();
 require("./config/dbConn");
+const Item = require("./config/User")
 const customer = require("./config/User1");
 const cors = require("cors");
 const passport = require("passport");
@@ -13,7 +14,7 @@ const clientsecret = "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";
 // connectDB()
 app.use(cors({
     origin: 'http://localhost:3000',
-    methods: 'GET,POST',
+    methods: 'GET,POST,PUT,DELETE',
     credentials: true
   }));
 app.use(express.json());
@@ -30,7 +31,7 @@ app.use(
 //Setup Passport
 app.use(passport.initialize());
 app.use(passport.session());
-
+const adminEmails = ['vaibhavi_sharma_bca22s2@jimsindia.org']
 passport.use(
   new GoogleStrategy(
     {
@@ -40,6 +41,7 @@ passport.use(
       scope: ["profile", "email"],
     },
     async (accessToken, refreshToken, profile, done) => {
+     
       /* console.log(profile); */
       try {
         let user = await customer.findOne({ GoogleId: profile.id });
@@ -48,7 +50,8 @@ passport.use(
             GoogleId: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
-            image: profile.photos[0].value
+            image: profile.photos[0].value,
+            isAdmin: adminEmails.includes(profile.emails[0].value)
           });
           await user.save();
         }
@@ -59,7 +62,12 @@ passport.use(
     }
   )
 );
-
+function isAdmin(req,res,next){
+  if(req.isAuthenticated() && req.user.isAdmin){
+    return next()
+  }
+  res.status(403).json({ message: "Forbidden: Admins only"})
+}
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -106,8 +114,6 @@ app.get("/logout",async (req,res)=>{
   })
 })
 
-
-
 //login api
 app.post("/api/Login", async (req, res) => {
   const { email, password } = req.body;
@@ -141,6 +147,47 @@ app.post("/api/SignUp", async (req, res) => {
   }
 });
 
+//get a admin id
+app.get("/admin",isAdmin, (req,res)=>{
+  res.json({message:"Welcome, Admin!"})
+})
+
+app.get('/api/items',async (req,res)=>{
+  try{
+    const item = await Item.find()
+    res.json(item)
+  }
+  catch(err){
+    res.status(500).json({error: err.message})
+  }
+})
+
+app.post('/api/items',isAdmin,async (req,res)=>{
+  try{
+    const newItem = new Item(req.body)
+    const savedItem = await newItem.save()
+    res.json(savedItem)
+  }catch (err){
+    res.status(500).json({ error: err.message})
+  }
+})
+
+app.put('/api/items/:id',isAdmin,async(req,res)=>{
+  try{
+    const updateItem = await Item.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    res.json(updateItem)
+  }catch(err){
+    res.status(500).json({error:err.message})
+  }
+})
+app.delete('/api/items/:id',isAdmin,async(req,res)=>{
+  try{
+    await Item.findByIdAndDelete(req.params.id)
+    res.json({message:"Item Deleted"})
+  }catch(err){
+    res.status(500).json({error:err.message})
+  }
+})
 //listening port
 app.listen(port, (err) => {
   if (err) {

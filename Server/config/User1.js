@@ -20,7 +20,11 @@ const UserSchema = new mongoose.Schema({
   },
   image:{
     type: String
-  }
+  },
+  isAdmin: {
+    type: Boolean,
+    // default: false
+  },
 },Timestamp=true);
 
 const Customers = mongoose.model("customers", UserSchema);

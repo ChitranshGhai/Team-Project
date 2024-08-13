@@ -15,6 +15,7 @@ import BulkOrder from "./Components/BulkOrder/BulkOrder";
 import Cart from "./Components/Cart/Cart";
 import TermsConditions from "./Components/TermsCon/TermsandCon";
 import PurchaseOrderForm from "./Components/PurchasePayment/PurchaseOrderForm";
+import Admin from "./Components/Admin/Admin";
 function App() {
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/TermsandCon" element={<TermsConditions />} />
             <Route path="/PurchaseOrderForm" element={<PurchaseOrderForm />} />
+            <Route path="/admin" element={<Admin/>}/>
           </Routes>
         </ScrollToTop>
         <Footer />

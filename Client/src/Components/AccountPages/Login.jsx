@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SideImage from "../Images/gift_candles.jpeg";
+import './AccountPages.css'
 
 
 function Login() {
@@ -62,6 +63,7 @@ function Login() {
               )}
               <form method="post" autoComplete="off" onSubmit={handleSubmit} className="Form">
                 <p>
+                  <label>Email Id:</label>
                 <input
                   type="email"
                   placeholder="E-Mail"
@@ -74,6 +76,7 @@ function Login() {
                 </p>
 
                 <p>
+                  <label> Password:</label>
                 <input
                   type="password"
                   placeholder="Password"

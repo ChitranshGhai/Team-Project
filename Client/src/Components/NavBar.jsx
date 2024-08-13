@@ -6,7 +6,6 @@ import axios from "axios";
 import Logo from "./Images/SirimiriLogo.png"
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [userdata, setUserData] = useState({});
   /* console.log("response:" , userdata) */
   const getUser = async () => {
@@ -80,6 +79,13 @@ function NavBar() {
               Contact Us
             </Link>
           </li>
+          {userdata.isAdmin &&(
+            <li>
+              <Link  className="Nav-List-Link" to="/Admin">
+                Admin
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
 
