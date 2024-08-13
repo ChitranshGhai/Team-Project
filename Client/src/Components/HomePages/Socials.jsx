@@ -7,17 +7,17 @@ function ContactUs() {
   <h1 className="mt-5">We are Social <i className="bi bi-instagram"></i></h1>
   </div>
   <div className="Socials-Main-Container mt-5">
-        <div className="mt-4 CardBoxShadow">
+        <div className="mt-4 CardBoxShadow respnosivesocial">
           <img data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="200" src={Insta1} alt="Social Media" />
         </div>
-        <div className="mt-4 mx-5 CardBoxShadow">
+        <div className="mt-4 mx-5 CardBoxShadow respnosivesocial">
           <img data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="200" src={Insta2} alt="Social Media" />
         </div>
-        <div className="mt-4 CardBoxShadow">
+        <div className="mt-4 CardBoxShadow respnosivesocial">
           <img data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-delay="200" src={Insta1} alt="Social Media" />

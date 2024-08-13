@@ -44,7 +44,7 @@ export default function Cart() {
         </div>
       ) : (
         <div className="cart-container2">
-          <h1>Shopping Cart</h1>
+          <h1 id="prod-cart-heading">Shopping Cart</h1>
           {cartItems.map((item) => (
             <div className="Product" key={item._id}>
             

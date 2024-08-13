@@ -11,7 +11,7 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ name: name, email: email, password: password });
+    /* console.log({ name: name, email: email, password: password }); */
     let result = await fetch("http://localhost:9998/api/SignUp", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
@@ -20,7 +20,7 @@ function SignUp() {
       },
     });
     result = await result.json();
-    const user = localStorage.setItem("user", JSON.stringify(result));
+    localStorage.setItem("user", JSON.stringify(result));
 
     if (result) {
       navigate("/Login");

@@ -22,15 +22,15 @@ function Login() {
     try {
       let result = await fetch("http://localhost:9998/api/Login", {
         method: "post",
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password}),
         headers: {
           "Content-Type": "application/json",
         },
       });
+      localStorage.setItem("user:", JSON.stringify({email,password}));
 
       result = await result.json();
       if (result.data === "Success") {
-        localStorage.setItem("user", JSON.stringify(result));
         navigate("/");
       } else {
         setErrorMessage(result.data);

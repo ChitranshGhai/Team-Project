@@ -34,8 +34,8 @@ function App() {
             <Route path='/BulkOrder' element={<BulkOrder/>}></Route>
             <Route path="/Cart" element={<Cart />} />
             <Route path="/TermsandCon" element={<TermsConditions />} />
-            <Route path="/PurchaseOrderForm" element={<PurchaseOrderForm />} />
             <Route path="/admin" element={<Admin/>}/>
+            <Route path="/PurchaseOrderForm/:id" element={<PurchaseOrderForm />} />
           </Routes>
         </ScrollToTop>
         <Footer />

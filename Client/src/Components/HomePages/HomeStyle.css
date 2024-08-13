@@ -164,7 +164,6 @@
     }
 }
 
-
 /* Social Section */
 
 
@@ -212,5 +211,18 @@
 
     .Our-Story-main-Container img {
         align-self: center;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    .respnosivesocial img{
+       height: 350px;
+       width: 350px;
+    }
+}
+@media only screen and (max-width: 1144px) {
+    .respnosivesocial img{
+       height: 300px;
+       width: 300px;
     }
 }

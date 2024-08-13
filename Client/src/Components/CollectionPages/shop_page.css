@@ -26,8 +26,9 @@
     align-items: flex-start;
     gap: 20px;
 }
-.content{
-  margin-top: 10%;
+.product-content{
+    margin-top: 6%;
+    height: 92%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -53,10 +54,9 @@
 }
 .counter{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     gap: 10px;
-    margin-top: 20px;
 }
 .counter button{
     width: 30px;
@@ -72,14 +72,13 @@
 .product-name {
     font-size: 36px;
     font-weight: bold;
-    margin: 20px;
-    margin-top: 20%;
+    margin: 20px 0 20px 0;
+    /* margin-top: 20%; */
     font-family:Arbutus Slab;
   }
   
-  .product-price {
+  #product-price {
     font-size: 24px;
-    margin: 1px 20px;
   }
   
   /* .review{
@@ -103,15 +102,14 @@
   .product-desc{
     font-size: 16px;
     color: #666;
-    margin: 20px 0;
-    padding: 0 20px;
+    margin: 20px 0 20px 0;
     line-height: 1.5;
   }
   
   .counter {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;*/
+    align-items: center; 
     gap: 10px;
     margin:20px;
   }
@@ -128,32 +126,30 @@
     cursor: pointer;
   }
 
-  .add-to-cart{
-    margin-top: 20px;
+  #add-to-cart{
     padding: 10px 20px;
     font-size: 16px;
+    height: 45px;
     font-weight: bold;
     background-color: #000;
     color: #fff;
     border: none;
     cursor: pointer;
-    margin: 20px;
   }
   .button-group{
     display: flex;
     gap: 30px;
-    margin-top: 20px;
+    margin-top: 50px;
   }
-  .add-to-cart:hover{
+  #add-to-cart:hover{
     border-radius: 30px;
     background-color: #fff;
     color: #000;
     opacity: 0.7;
     border: 2px solid #000;
   }
-  .buy-now{
+  #buy-now{
     display: flex;
-    margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
@@ -161,9 +157,9 @@
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
-  .buy-now:hover{
+  #buy-now:hover{
     border-radius: 30px;
     background-color: #fff;
     color: #000;

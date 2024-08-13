@@ -144,9 +144,9 @@ export default function ShopPage() {
 
           <div className="main-content">
             <img src={product.image} alt={product.name} className="main" />
-            <div className="content">
+            <div className="product-content">
               <h1 className="product-name">{product.name || "CANDLE NAME"}</h1>
-              <p className="product-price">Rs. {product.price}</p>
+              <p id="product-price">Rs. {product.price}</p>
               <p className="product-desc">{product.description}</p>
               {count === 5 ? <p>Reached Maximum Limit !</p> : <p></p>}
               <div className="counter">
@@ -168,14 +168,18 @@ export default function ShopPage() {
               </div>
               <div className="button-group">
                 <button
-                  className="add-to-cart"
+                  id="add-to-cart"
                   onClick={() => addItemToCart({ ...product, quantity: count })}
                 >
                   ADD TO CART
                 </button>
-                <button className="buy-now" onClick={showRazorpay}>
-                  BUY NOW
-                </button>
+                {products.slice(1,2).map((val)=>(
+                  <Link style={{textDecoration:'None'}} to={{ pathname: `/PurchaseOrderForm/${val._id}`, state: {val} }}>
+                  <button id="buy-now">
+                    BUY NOW
+                  </button>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
