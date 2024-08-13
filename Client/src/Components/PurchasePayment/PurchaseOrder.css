@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Order-Main-Container{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+}
+
+.Form-Container-div{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+    border-right: .5px solid black;
+}
+
+.Payment-Form{
+    width: 65%;
+    height: 100%;
+   /*  border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 20px 20px;
+   
+}
+
+#Order-Email, #Order-Phone, #Order-Apartment,#Order-Address{
+    width: 94%;
+    height: 48px;
+    border-radius: 5px;
+    border: solid black;
+    border-width: 0.5px;
+    padding: 8px;
+
+}
+
+#Order-Email:focus, #Order-Phone:focus, #Order-Apartment:focus,#Order-Address:focus{
+    border: 2px solid brown;
+    outline: none;
+
+}
+
+#Order-Email::placeholder,#Order-Phone::placeholder,#Order-Apartment::placeholder,#Order-Address::placeholder{
+    color: black;
+    font-size: 14px;
+}
+
+#Order-City,#Order-State,#Order-Pin{
+    width: 31%;
+    height: 48px;
+    border-radius: 5px;
+    border: .3px solid black;
+    padding: 8px;
+}   
+
+#Order-City:focus,#Order-State:focus,#Order-Pin:focus{
+    border: 2px solid brown;
+    outline: none;
+}   
+
+#Order-City::placeholder,#Order-Pin::placeholder{
+    color: black;
+    font-size: 14px;
+}
+
+#Order-First-Name,#Order-Second-Name{
+    width: 48%;
+    height: 48px;
+    border-radius: 5px;
+    border: .3px solid black;
+    padding: 8px;
+}
+
+#Order-First-Name:focus,#Order-Second-Name:focus{
+    border: 2px solid brown;
+    outline: none;
+}
+
+#Order-First-Name::placeholder,#Order-Second-Name::placeholder{
+    color: black;
+    font-size: 14px;
+}
+
+#Full-Name-Spacing{
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#City-Pin-State-Input{
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#Order-Payment-Btn{
+    width: 94%;
+    height: 48px;
+    border: none;
+    background-color: #3D2727;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.Order-Detail-Container-Div{
+    width: 40%;
+    padding: 0 20px 20px 20px;
+}
+
+.Product-Detail{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0 30px 0;
+}
+
+
+.Product-Detail img{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+
+.image-productName{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Amount-Detail{
+    width: 50%;
+}

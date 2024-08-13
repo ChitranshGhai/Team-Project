@@ -95,14 +95,13 @@
 
 
 /* Candles Information CSS Section */
-.main-content {
+.main-content-gift{
   flex-grow: 1;
   padding: 20px;
 }
 /* All Candles Container */
   .image-container {
-    display: flex;
-    flex-wrap: wrap;
+    width: 15%;
     margin-left: 1%;
     margin-right: 1%;
     grid-template-columns: repeat(auto-fill, minmax(200px,1fr));

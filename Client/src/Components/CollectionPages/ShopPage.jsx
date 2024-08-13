@@ -173,13 +173,15 @@ export default function ShopPage() {
                 >
                   ADD TO CART
                 </button>
-                {products.slice(1,2).map((val)=>(
-                  <Link style={{textDecoration:'None'}} to={{ pathname: `/PurchaseOrderForm/${val._id}`, state: {val} }}>
-                  <button id="buy-now">
-                    BUY NOW
-                  </button>
-                  </Link>
-                ))}
+                <Link
+                  style={{ textDecoration: "None" }}
+                  to={{
+                    pathname: `/PurchaseOrderForm/${product._id}`,
+                    state: { product: { ...product, quantity: count } },
+                  }}
+                >
+                  <button id="buy-now">BUY NOW</button>
+                </Link>
               </div>
             </div>
           </div>

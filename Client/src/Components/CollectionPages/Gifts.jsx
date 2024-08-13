@@ -118,7 +118,7 @@ export default function Gifts() {
           </ul>
         </aside>
         {/* Main Content (Candles Information) This one is only for giving height and width*/}
-        <div className="main-content">
+        <div className="main-content-gift">
           {/* All Data In this div Every candel Information */}
           <div className="image-container">
             {/* One Candel Information In This Div */}

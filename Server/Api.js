@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const path = require("path");
 require("dotenv").config();
 require("./config/dbConn");
+const Order=require('./config/User2')
 const user = require('./config/User');
 
 const PORT = process.env.PORT || 1337;
@@ -98,13 +99,16 @@ app.post("/verification", (req, res) => {
     const shasum = crypto.createHmac("sha256", secret);
     shasum.update(JSON.stringify(req.body));
     const digest = shasum.digest("hex");
-
+  
     if (digest === req.headers["x-razorpay-signature"]) {
-        res.status(200).json({ message: "OK" });
+      // Handle payment verification here
+      // Access form data if needed
+      console.log("Payment verification successful", req.body);
+      res.status(200).json({ message: "OK" });
     } else {
-        res.status(403).json({ message: "Invalid" });
+      res.status(403).json({ message: "Invalid" });
     }
-});
+  });
 
 app.post("/razorpay/:productId", async (req, res) => {
     const { productId } = req.params;
@@ -131,6 +135,24 @@ app.post("/razorpay/:productId", async (req, res) => {
         };
 
         const response = await razorpay.orders.create(options);
+        const orderData = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            address: req.body.address,
+            apartment: req.body.apartment,
+            city: req.body.city,
+            state: req.body.state,
+            pinCode: req.body.pinCode,
+            phone: req.body.phone,
+            productId: productId,
+            amount: response.amount,
+            currency: response.currency,
+            razorpayOrderId: response.id,
+        };
+        const order = new Order(orderData);
+        await order.save();
+
         res.status(200).json({
             id: response.id,
             currency: response.currency,
@@ -141,6 +163,27 @@ app.post("/razorpay/:productId", async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 });
+
+
+app.post('/update-order', async (req, res) => {
+    try {
+        const { razorpayPaymentId, razorpayOrderId, razorpaySignature } = req.body;
+        const order = await Order.findOneAndUpdate(
+            { razorpayOrderId: razorpayOrderId },
+            { $set: { razorpayPaymentId, razorpaySignature, status: 'Paid' } },
+            { new: true }
+        );
+        if (!order) {
+            return res.status(404).json({ message: "Order not found" });
+        }
+        res.status(200).json({ message: "Order updated successfully", order });
+    } catch (error) {
+        console.error(`Error updating order: ${error}`);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+});
+
+
 
 // Start server
 app.listen(PORT, () => {
