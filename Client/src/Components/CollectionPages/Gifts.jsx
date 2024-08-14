@@ -123,7 +123,7 @@ export default function Gifts() {
           <div className="gift-image-container">
             {/* One Candel Information In This Div */}
             {filterProduct.map((val) => (
-              <div key={val._id} className="gift-image-wrapper col-3">
+              <div key={val._id} className="gift-image-wrapper ">
                 <Link id="for-gift-fomating" to={{ pathname: `/product/${val._id}`, state: {val} }}>
                     <img src={val.image} alt="" id="product-image"/>
 
