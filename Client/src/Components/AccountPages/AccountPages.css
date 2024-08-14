@@ -3,10 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* 
-#root{
-    background-color: #f4e7d7;
-} */
 
 /* Login Outer Div For Image  */
 .Outer-Picture-Div{
@@ -22,12 +18,12 @@
 .Container-Div{
     width: 63%;
     height: 90%;
-    /* border: 2px solid orange; */
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #212227;
+    background-color: #291B1B;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Login Margin Div to Provide Correct margin */
@@ -76,30 +72,47 @@
     align-items: start;
     justify-content: center;
 }
+
+.Main-Form h1{
+    color: #e2a532;
+    font-family: Dream-Avenue;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+.Main-Form p{
+    color: white;
+}
+
 .Form{
     width: 100%;
 }
+
+.Main-Form input::placeholder {
+    color: black;
+}
+
 #mail,#Pass{
     width: 100%;
     height: 5.5vh;
-    background-color: #637074;
+    background-color: white;
     border-radius: 5px;
     border: none;
-    color: white;
+    color: black;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 10px;
     /* opacity: .4; */
     margin-bottom: 8px;
     outline: none;
-    background-color: #637074; 
+
 }
 #mail:focus,#Pass:focus{
-    box-shadow: 0 0 0 2px rgb(23, 207, 106);
+    box-shadow: 0 0 0 2px #e2a532;
 }
 #Sign-In-Btn{
     width: 100%;
     height: 5.5vh;
-    background-color: #637074;
+    background-color: #803D3B;
     border-radius: 5px;
     margin-top: 25px;
     border: none;
@@ -109,18 +122,14 @@
     text-align: center;
 }
 #Sign-In-Btn:hover{
-    box-shadow: 0 0 0 2px rgb(23, 207, 106);
+    box-shadow: 0 0 0 2px #e2a532;
 }
-
 
 
 ::placeholder{
     color: white;
-    opacity: 1;
+    opacity: 0.6;
 }
-
-
-
 
 
 /* Sign-Up Form */
@@ -128,24 +137,24 @@
 #email,#password,#Name{
     width: 100%;
     height: 5.5vh;
-    background-color: #637074;
+    background-color: white;
     border-radius: 5px;
     border: none;
-    color: white;
-    padding-left: 5px;
+    color: black;
+    padding-left: 10px;
     /* opacity: .4; */
     margin-bottom: 5px;
     outline: none; 
 }
 
 #email:focus,#password:focus, #Name:focus{
-    box-shadow: 0 0 0 2px rgb(23, 207, 106);
+    box-shadow: 0 0 0 2px #e2a532;
 }
 
 #GoogleSignin-Btn{
     width: 100%;
     height: 5.5vh;
-    background-color: #637074;
+    background-color: #803D3B;
     border-radius: 5px;
     margin-top: 25px;
     border: none;
@@ -155,3 +164,34 @@
     text-align: center;
 }
 
+#GoogleSignin-Btn:hover{
+    box-shadow: 0 0 0 2px #e2a532;
+}
+
+@media screen and (max-width: 1370px) {
+
+    .Container-Div {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    .Form-Div{
+        width: 100%;
+        height: 100%;
+    }
+
+    .Main-Form{
+        width: 90%;
+    }
+
+    .Image-Div {
+        display: none;
+    }
+
+    .Container-Div {
+        width: 70%;
+        height: 80%;
+    }
+}

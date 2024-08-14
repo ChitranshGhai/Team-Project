@@ -47,7 +47,7 @@ function SignUp() {
               <h1 style={{ marginBottom: 10 }}>Create an account</h1>
               <p style={{ marginBottom: 30 }}>
                 Have an Account?{" "}
-                <Link style={{ color: "green" }} to="/Login">
+                <Link style={{ color: "#e2a532" }} to="/Login">
                   Log In
                 </Link>
               </p>
@@ -95,7 +95,7 @@ function SignUp() {
                 </p>
                 <p>
                   <input style={{ width: 20 }} type="checkbox" /> I agree to{" "}
-                  <Link style={{ color: "green" }}>Terms & Conditions</Link>
+                  <Link to="/TermsandCon" style={{ color: "#e2a532" }}>Terms & Conditions</Link>
                 </p>
                 <button id="Sign-In-Btn" type="submit">
                   Get Started

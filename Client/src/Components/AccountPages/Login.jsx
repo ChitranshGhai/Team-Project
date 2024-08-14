@@ -54,8 +54,8 @@ function Login() {
           {/* Form Div */}
           <div className="Form-Div">
             <div className="Main-Form">
-                <h2 style={{marginBottom:30}}>Log in to your account</h2>
-                <p style={{marginBottom:50}}>Don't Have an Account? <Link style={{color:"green"}} to='/SignUp'>Sign Up</Link></p>
+                <h1 style={{marginBottom:30}}>Log in to your account</h1>
+                <p style={{marginBottom:50}}>Don't Have an Account? <Link style={{color:"#e2a532"}} to='/SignUp'>Sign Up</Link></p>
                 {errorMessage && (
                 <div style={{ color: "red", marginBottom: 20 }}>
                   {errorMessage}
@@ -86,7 +86,7 @@ function Login() {
                 />
                 </p>
                 <p>
-                    <input style={{width: 20}} type='checkbox'/> I agree to <Link style={{color:"green"}}>Terms & Conditions</Link>
+                    <input style={{width: 20}} type='checkbox'/> I agree to <Link to="/TermsandCon" style={{color:"#e2a532"}}>Terms & Conditions</Link>
                 </p>
                 <button id="Sign-In-Btn" type="submit">Log In</button>
                 <button id="GoogleSignin-Btn" onClick={loginwithgoogle}>
