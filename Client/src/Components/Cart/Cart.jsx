@@ -52,7 +52,6 @@ export default function Cart() {
             
               <div className="ProductInfo">
                 <h3>{item.name}</h3>
-                <p>{item.description}</p>
             
                 <div className="counter">
                   <button
