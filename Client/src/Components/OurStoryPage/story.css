@@ -72,8 +72,8 @@
   }
 
   .section-image-2 img {
-    width: 600px;
-    height: 560px;
+    width: 380px;
+    height: 550px;
     border-radius: 10px;
     box-shadow: 2px 4px 11px black;
   }
@@ -111,7 +111,8 @@
     }
 
     .section-image-2 img{
-        width: 550px;
+        width: 400px;
+        height: 510px;
     }
   }
 
@@ -128,8 +129,8 @@
     }
 
     .section-image-2 img{
-        width: 550px;
-        
+        width: 400px;
+        height: 480px;
     }
   }
 
@@ -147,8 +148,8 @@
     }
 
     .section-image-2 img{
-        width: 530px;
-        height: 520px;
+        width: 350px;
+        height: 450px;
     }
   }
 
@@ -166,8 +167,8 @@
     }
 
     .section-image-2 img{
-        width: 550px;
-        height: 520px;
+        width: 320px;
+        height: 390px;
     }
   }
 
@@ -186,8 +187,8 @@
     }
 
     .section-image-2 img{
-        width: 520px;
-        height: 500px;
+        width: 310px;
+        height: 390px;
     }
   }
   
@@ -220,7 +221,7 @@
 
     .section-image-2 img{
         margin-top: 30px;
-        width: 440px;
+        width: 320px;
         height: 390px;
     }
   }

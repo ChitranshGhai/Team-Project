@@ -61,53 +61,6 @@ export default function ShopPage() {
     toast.success("Item added to cart");
   };
 
-  function loadScript(src) {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
-    });
-  }
-
-  async function showRazorpay() {
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-    if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
-    const data = await fetch(`http://localhost:2003/razorpay/${product._id}`, {
-      method: "POST",
-    }).then((t) => t.json());
-    console.log(data);
-    const options = {
-      key: "rzp_test_4W26iQdHpqmXmZ",
-      currency: data.currency,
-      amount: data.amount.toString(),
-      order_id: data.id,
-      name: "Course Fee",
-      description: "Thank you for nothing. Please give us some money",
-      image: "http://localhost:2003/logo.svg",
-      handler: function (response) {
-        alert("Transaction successful");
-      },
-      prefill: {
-        name: "ainwik",
-        email: "ceo@ainwik.in",
-        phone_number: "9899876758",
-      },
-    };
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-  }
-
   if (!product) {
     return <div>Loading...</div>;
   }
@@ -192,20 +145,23 @@ export default function ShopPage() {
         </div>
         <h3 className="height">Related Products</h3>
         <div className="related-prod">
-          {relatedProducts.slice(1, 5).map((val) => (
-            <div key={val._id} className="image-wrapper col-3">
+          {relatedProducts.slice(1, 4).map((val) => (
+            <div key={val._id} className="image-wrapper">
               <Link
+              id="for-alignment"
                 to={{
                   pathname: `/product/${val._id}`,
                   state: { product: val },
                 }}
               >
-                <div key={val._id} className="image-inner-wrapper">
-                  <img src={val.image} alt="" className="product-image" />
-                </div>
-                <h2 className="product-title">Collection Name</h2>
-                <p className="product-desc placeholder-glow">{val.detail}</p>
-                <p className="product-price">Price: Rs. {val.price}</p>
+                <img src={val.image} alt="product"/>
+
+                <h2>{val.name}</h2>
+                <p>
+                  {" "}
+                  {val.detail}
+                </p>
+                <p style={{fontWeight:600}}>Price: Rs. {val.price}</p>
               </Link>
             </div>
           ))}

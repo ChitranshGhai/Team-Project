@@ -120,18 +120,16 @@ export default function Gifts() {
         {/* Main Content (Candles Information) This one is only for giving height and width*/}
         <div className="main-content-gift">
           {/* All Data In this div Every candel Information */}
-          <div className="image-container">
+          <div className="gift-image-container">
             {/* One Candel Information In This Div */}
             {filterProduct.map((val) => (
-              <div key={val._id} className="image-wrapper">
-                <Link to={{ pathname: `/product/${val._id}`, state: {val} }}>
-                  <div className="image-inner-wrapper">
-                    <img src={val.image} alt="" className="product-image" />
-                  </div>
+              <div key={val._id} className="gift-image-wrapper col-3">
+                <Link id="for-gift-fomating" to={{ pathname: `/product/${val._id}`, state: {val} }}>
+                    <img src={val.image} alt="" id="product-image"/>
 
-                  <h2 className="product-title">{val.name}</h2>
-                  <p className="product-desc placeholder-glow">{val.detail}</p>
-                  <p className="product-price">{val.price}</p>
+                  <h2 id="gift-product-title">{val.name}</h2>
+                  <p id="gift-product-desc placeholder-glow">{val.detail}</p>
+                  <p id="gift-product-price">Price: Rs.{val.price}</p>
                 </Link>
               </div>
             ))}

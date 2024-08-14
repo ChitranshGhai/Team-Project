@@ -1,6 +1,6 @@
 import React from 'react'
 import candles from '../Images/image1.jpeg'
-import candle1 from '../Images/candles.jpg'
+import candle1 from '../Images/instagram2.avif'
 import './story.css';
 function OurStory() {
   return (

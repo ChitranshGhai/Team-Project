@@ -63,7 +63,6 @@ function Login() {
               )}
               <form method="post" autoComplete="off" onSubmit={handleSubmit} className="Form">
                 <p>
-                  <label>Email Id:</label>
                 <input
                   type="email"
                   placeholder="E-Mail"
@@ -76,7 +75,6 @@ function Login() {
                 </p>
 
                 <p>
-                  <label> Password:</label>
                 <input
                   type="password"
                   placeholder="Password"
