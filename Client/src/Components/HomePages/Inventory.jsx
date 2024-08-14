@@ -83,7 +83,7 @@ function RowColLayoutColWidthBreakpointExample() {
           </div>
         </div>
       </div>
-      <Link to="/Collections" id="ViewAllBtnLink"><button id="ViewAll-Button">View All</button></Link>
+      <Link to="/Candles" id="ViewAllBtnLink"><button id="ViewAll-Button">View All</button></Link>
     </>
   );
 }
