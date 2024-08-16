@@ -10,17 +10,17 @@ function ContactUs() {
         <div className="mt-4 CardBoxShadow respnosivesocial">
           <img data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="200" src={Insta1} alt="Social Media" />
+              data-aos-delay="100" src={Insta1} alt="Social Media" />
         </div>
         <div className="mt-4 mx-5 CardBoxShadow respnosivesocial">
           <img data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="200" src={Insta2} alt="Social Media" />
+              data-aos-delay="100" src={Insta2} alt="Social Media" />
         </div>
         <div className="mt-4 CardBoxShadow respnosivesocial">
           <img data-aos="fade-up"
               data-aos-duration="1000"
-              data-aos-delay="200" src={Insta1} alt="Social Media" />
+              data-aos-delay="100" src={Insta1} alt="Social Media" />
         </div>
         {/* 
         <i class="bi bi-instagram"></i>
