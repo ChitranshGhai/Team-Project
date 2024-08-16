@@ -6,7 +6,7 @@ import SideImage from "../Images/gift_candles.jpeg";
 import './AccountPages.css'
 
 
-function Login() {
+function Login({ onLoginSuccess }) {
 
   const loginwithgoogle = () => {
     window.open("http://localhost:9998/auth/google/callback", "_self");
@@ -31,6 +31,7 @@ function Login() {
 
       result = await result.json();
       if (result.data === "Success") {
+        onLoginSuccess();
         navigate("/");
       } else {
         setErrorMessage(result.data);

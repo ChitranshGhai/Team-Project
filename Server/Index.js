@@ -189,19 +189,6 @@ app.delete('/api/items/:id',isAdmin,async(req,res)=>{
   }
 })
 
-/* Log in Nav Bar Display API */
-app.get("/api/getnav/:id", async(req,res)=>{
-  try {
-    const data = await customer.findById(req.params.id);
-    if (!data) {
-        return res.status(404).send('User Not Found');
-    }
-    res.json(data);
-} catch (err) {
-    res.status(500).send(err.message);
-}
-})
-
 
 //listening port
 app.listen(port, (err) => {

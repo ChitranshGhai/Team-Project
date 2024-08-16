@@ -16,11 +16,16 @@ import Cart from "./Components/Cart/Cart";
 import TermsConditions from "./Components/TermsCon/TermsandCon";
 import PurchaseOrderForm from "./Components/PurchasePayment/PurchaseOrderForm";
 import Admin from "./Components/Admin/Admin";
+import { useState } from "react";
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);  // This will trigger a re-render of the NavBar
+  };
   return (
     <>
       <Router>
-        <NavBar />
+        <NavBar isLoggedIn={isLoggedIn} />
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -28,7 +33,7 @@ function App() {
             <Route path="/ContactUs" element={<ContactUs />} />
             <Route path="/Candles" element={<Gifts />} />
             <Route path="/product/:id" element={<ShopPage />} />
-            <Route path="/Login" element={<Login />} />
+            <Route path="/Login" element={<Login  onLoginSuccess={handleLoginSuccess}  />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path='/Faq' element={<Faq/>}></Route>
             <Route path='/BulkOrder' element={<BulkOrder/>}></Route>

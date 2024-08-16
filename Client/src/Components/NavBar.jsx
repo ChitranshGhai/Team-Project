@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Logo from "./Images/SirimiriLogo.png";
 
-function NavBar() {
+function NavBar({ isLoggedIn }) {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [userdata, setUserData] = useState({});
+  const [localUser, setLocalUser] = useState(null); // state to hold local login user
 
   const getUser = async () => {
     try {
@@ -27,8 +27,14 @@ function NavBar() {
   };
 
   useEffect(() => {
+    // Fetch Google Auth user
     getUser();
-  }, []);
+    // Fetch form-authenticated user from local storage
+    const localUser = JSON.parse(localStorage.getItem("user:"));
+    if (localUser) {
+      setLocalUser(localUser);
+    }
+  }, [isLoggedIn]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -37,9 +43,9 @@ function NavBar() {
   /* Logout Button */
   const logout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("user:"); // Clear form login user
     window.open("http://localhost:9998/logout", "_self");
   };
-
 
   return (
     <nav className={`Nav-Main-Container ${menuOpen ? "active" : ""}`}>
@@ -81,9 +87,9 @@ function NavBar() {
               Contact Us
             </Link>
           </li>
-          {userdata.isAdmin &&(
+          {userdata.isAdmin && (
             <li>
-              <Link  className="Nav-List-Link" to="/Admin">
+              <Link className="Nav-List-Link" to="/Admin">
                 Admin
               </Link>
             </li>
@@ -93,7 +99,7 @@ function NavBar() {
 
       {/* Nav-Bar-Icons */}
       <div className="Nav-Icons">
-        {Object.keys(userdata).length > 0  ? (
+        {userdata?.name ? (
           <Dropdown className="me-3">
             <Dropdown.Toggle className="bg bg-transparent border" id="dropdown-basic">
               <Link id="After-Login"><img id="Google-Profile-Pic" src={userdata.image} alt="profile Pic" /></Link>
@@ -105,21 +111,18 @@ function NavBar() {
               <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        ) : Object.keys(userdata).length > 0  ? (
-          <>
-            {/* Custom logic for users who logged in with their own credentials */}
-            <Dropdown className="me-3">
-              <Dropdown.Toggle className="bg bg-transparent border" id="dropdown-basic">
-                <Link id="After-Login">data</Link>
-              </Dropdown.Toggle>
+        ) : localUser?.email ? (
+          <Dropdown className="me-3">
+            <Dropdown.Toggle className="bg bg-transparent border" id="dropdown-basic">
+              <span>{localUser.email}</span>
+            </Dropdown.Toggle>
 
-              <Dropdown.Menu variant="dark">
-                <Dropdown.Item href="#/action-1">Your Account</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Your Orders</Dropdown.Item>
-                <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </>
+            <Dropdown.Menu variant="dark">
+              <Dropdown.Item href="#/action-1">Your Account</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Your Orders</Dropdown.Item>
+              <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         ) : (
           <Link to="/Login">
             <i
