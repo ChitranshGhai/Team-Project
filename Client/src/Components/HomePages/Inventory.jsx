@@ -4,6 +4,8 @@
 import Col from "react-bootstrap/Col"; */
 import Card from "react-bootstrap/Card";
 import SampleCandle from "../Images/sample.jpg";
+import Product from "../Images/Product1.jpg";
+import Products from "../Images/Product2.jpg"
 import "./HomeStyle.css";
 
 
@@ -26,7 +28,7 @@ function RowColLayoutColWidthBreakpointExample() {
             >
               <Card.Img
                 variant="top"
-                src={SampleCandle}
+                src={Products}
                 className="rounded-0 CardImg" /* style={{height:'420px', width:'370px'}} */
               />
               <Card.Body className="text-center textbackg">
@@ -47,7 +49,7 @@ function RowColLayoutColWidthBreakpointExample() {
             >
               <Card.Img
                 variant="top"
-                src={SampleCandle}
+                src={Product}
                 className="rounded-0 CardImg" /* style={{height:'420px', width:'370px'}} */
 
               />
