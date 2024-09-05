@@ -44,24 +44,38 @@ export default function Cart() {
         </div>
       ) : (
         <div className="cart-container2">
-          <h1 id="prod-cart-heading">Shopping Cart</h1>
+
+          <h1 id="prod-cart-heading" style={{fontSize:65}}>Your Cart</h1>
+
+          <div className="cart-headings">
+            <div className="cart-product-heading">PRODUCT</div>
+            <div className="cart-Quantity-heading">QUANTITY</div>
+            <div className="cart-Total-heading">TOTAL</div>
+          </div>
+
           {cartItems.map((item) => (
             <div className="Product" key={item._id}>
-            
-              <img id="Products-Pic" src={item.image} alt="" />
+              <img id="Products-Pic" src={item.image} alt="Product-Pic" />
+              <div className="product-details">
+              <h3 style={{fontSize: 25}}>{item.name}</h3>
+              <p style={{fontSize: 20}}>₹ {item.price}</p>
+              </div>
             
               <div className="ProductInfo">
-                <h3>{item.name}</h3>
-            
+                
                 <div className="counter">
                   <button
                     onClick={() => updateQuantity(item._id, item.quantity - 1)}
+                    style={{border:"None", fontSize: 20}}
                   >
                     -
                   </button>
+
                   <h3 className="height3">{item.quantity}</h3>
+                  
                   <button
                     onClick={() => updateQuantity(item._id, item.quantity + 1)}
+                    style={{border:"None", fontSize: 20}}
                   >
                     +
                   </button>
@@ -69,7 +83,7 @@ export default function Cart() {
             
                 <div className="For-Removing-Div">
                   <a href="" onClick={() => removeItem(item._id)}>
-                    Remove
+                  <i class="bi bi-trash" style={{color:"black", fontSize: 20, marginLeft: 25}}></i>
                   </a>
                   {/* <a href=''>Save For Later</a>
                 <a href=''>See more like this</a>
@@ -79,15 +93,14 @@ export default function Cart() {
               </div>
 
               <div className="product-price">
-                <h2>Price</h2>
-              <p>₹ {item.price}</p>
+              <p>₹ {item.price* item.quantity}</p>
               </div>
             
             </div>
           ))}
-          
           <div className="cart-total">
-            <p>Total: ₹{totalAmount}</p>
+            <pre>Subtotal  ₹{totalAmount}</pre>
+            <p style={{fontSize: 15}}>Free Shipping all over India</p>
             <button id="checkout-button">Proceed to checkout</button>
           </div>
         </div>
