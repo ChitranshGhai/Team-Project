@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Cart.css";
 import cart from "../Images/cart-icon.jpg";
-import { Link } from "react-router-dom";
-// import Sample from '../Images/gift2.jpg'
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState(() => {
@@ -24,10 +23,26 @@ export default function Cart() {
     setCartItems(updatedItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedItems));
   };
+
   const totalAmount = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  // Use navigate to programmatically go to checkout and pass state
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    // Ensure there are cartItems before navigating
+    if (cartItems.length > 0) {
+      navigate(`/CheckoutForm`, {
+        state: { cartItems, totalAmount },
+      });
+    } else {
+      alert("Your cart is empty.");
+    }
+  };
+
   return (
     <div className="Cart">
       {cartItems.length === 0 ? (
@@ -83,17 +98,14 @@ export default function Cart() {
             
                 <div className="For-Removing-Div">
                   <a href="" onClick={() => removeItem(item._id)}>
-                  <i class="bi bi-trash" style={{color:"black", fontSize: 20, marginLeft: 25}}></i>
+                  <i className="bi bi-trash" style={{color:"black", fontSize: 20, marginLeft: 25}}></i>
                   </a>
-                  {/* <a href=''>Save For Later</a>
-                <a href=''>See more like this</a>
-                <a href=''>Share</a> */}
                 </div>
             
               </div>
 
               <div className="product-price">
-              <p>₹ {item.price* item.quantity}</p>
+              <p>₹ {item.price * item.quantity}</p>
               </div>
             
             </div>
@@ -101,7 +113,11 @@ export default function Cart() {
           <div className="cart-total">
             <pre>Subtotal  ₹{totalAmount}</pre>
             <p style={{fontSize: 15}}>Free Shipping all over India</p>
-            <button id="checkout-button">Proceed to checkout</button>
+            
+            {/* Use a button with onClick handler for checkout */}
+            <button id="checkout-button" onClick={handleCheckout}>
+              Proceed to checkout
+            </button>
           </div>
         </div>
       )}

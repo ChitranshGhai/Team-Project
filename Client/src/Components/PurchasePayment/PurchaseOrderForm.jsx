@@ -221,6 +221,9 @@ function PurchaseOrderForm() {
                 onChange={handleChange}
               >
                 <option value="Haryana">Haryana</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Punjab">Punjab</option>
                 {/* Add more state options here */}
               </select>
 
