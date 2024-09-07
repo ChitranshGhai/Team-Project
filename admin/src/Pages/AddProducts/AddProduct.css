@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Add-Product{
+    width: 70%;
+    margin-left: max(5vw,25px);
+    display: flex;
+    font-size: 16px;
+    color: #6d6d6d;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.flex-col{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flex-col p{
+    margin: 0%;
+}
+
+.text-input{
+    width: max(40%,280px);
+}
+
+.text-input input, .text-input textarea{
+    padding: 10px;
+}
+
+.text-input p{
+    margin: 10px 0 0 0;
+    font-size: 16px;
+    color: #6d6d6d;
+}
+
+.combined-inputs{
+    display: flex;
+    gap: 30px;
+}
+
+.combined-inputs input{
+    padding: 10px;
+    max-width: 120px;
+}
+
+.add-btn{
+    max-width: 150px;
+    border: none;
+    padding: 10px;
+    background-color: black;
+    color:white;
+    cursor: pointer;
+}
+
+.image-input img{
+    max-width: 120px;
+}

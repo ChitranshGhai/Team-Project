@@ -15,7 +15,6 @@ import BulkOrder from "./Components/BulkOrder/BulkOrder";
 import Cart from "./Components/Cart/Cart";
 import TermsConditions from "./Components/TermsCon/TermsandCon";
 import PurchaseOrderForm from "./Components/PurchasePayment/PurchaseOrderForm";
-import Admin from "./Components/Admin/Admin";
 import { useState } from "react";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);  
@@ -39,7 +38,6 @@ function App() {
             <Route path='/BulkOrder' element={<BulkOrder/>}></Route>
             <Route path="/Cart" element={<Cart />} />
             <Route path="/TermsandCon" element={<TermsConditions />} />
-            <Route path="/admin" element={<Admin/>}/>
             <Route path="/PurchaseOrderForm/:id" element={<PurchaseOrderForm />} />
           </Routes>
         </ScrollToTop>

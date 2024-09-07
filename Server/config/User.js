@@ -18,10 +18,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true,"Description is required"]
     },
-    image:{
-        type: String,
-        required: [true,"Image is required"]
-    },
+    image: {
+        data: Buffer,
+        contentType: String
+      },
     additional:{
         type: String,
         required: [true,"Information required"]

@@ -147,48 +147,6 @@ app.post("/api/SignUp", async (req, res) => {
   }
 });
 
-//get a admin id
-app.get("/admin",isAdmin, (req,res)=>{
-  res.json({message:"Welcome, Admin!"})
-})
-
-app.get('/api/items',async (req,res)=>{
-  try{
-    const item = await Item.find()
-    res.json(item)
-  }
-  catch(err){
-    res.status(500).json({error: err.message})
-  }
-})
-
-app.post('/api/items',isAdmin,async (req,res)=>{
-  try{
-    const newItem = new Item(req.body)
-    const savedItem = await newItem.save()
-    res.json(savedItem)
-  }catch (err){
-    res.status(500).json({ error: err.message})
-  }
-})
-
-app.put('/api/items/:id',isAdmin,async(req,res)=>{
-  try{
-    const updateItem = await Item.findByIdAndUpdate(req.params.id, req.body, {new:true})
-    res.json(updateItem)
-  }catch(err){
-    res.status(500).json({error:err.message})
-  }
-})
-app.delete('/api/items/:id',isAdmin,async(req,res)=>{
-  try{
-    await Item.findByIdAndDelete(req.params.id)
-    res.json({message:"Item Deleted"})
-  }catch(err){
-    res.status(500).json({error:err.message})
-  }
-})
-
 
 //listening port
 app.listen(port, (err) => {

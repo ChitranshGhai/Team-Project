@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const multer = require('multer');
 const mongoose = require('mongoose')
 const Razorpay = require("razorpay");
 const shortid = require("shortid");
@@ -18,7 +19,28 @@ const PORT = process.env.PORT || 1337;
 app.use(cors());
 app.use(bodyParser.json());
 
+
+//Multer Configuration
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 // User routes
+
+app.get('/showproducts', async (req, res) => {
+    try {
+        const products = await user.find();
+        if (products && products.length > 0) {
+            res.status(200).json({ success: true, data: products });
+        } else {
+            res.status(404).json({ success: false, message: "No data found" });
+        }
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+
+
 app.get('/', async (req, res) => {
     try {
         const getData = await user.find();
@@ -45,13 +67,17 @@ app.get('/getData/:id', async (req, res) => {
     }
 });
 
-app.post('/product', async (req, res) => {
-    const { name, price, detail, image, additional, description } = req.body;
+app.post('/product',upload.single('image'), async (req, res) => {
+    const { name, price, detail, additional, description } = req.body;
+    const imageFile=req.file;
     const newUser = new user({
         name,
         price,
         detail,
-        image,
+        image:{
+            data:imageFile.buffer,
+            contentType:imageFile.mimmetype
+        },
         additional,
         description
     });
@@ -87,6 +113,9 @@ app.delete('/product/:_id', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+
+
+
 
 // Razorpay configuration
 var razorpay = new Razorpay({
