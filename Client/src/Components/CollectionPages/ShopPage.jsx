@@ -101,7 +101,7 @@ export default function ShopPage() {
               <h1 className="product-name">{product.name || "CANDLE NAME"}</h1>
               <p id="product-price">Rs. {product.price}</p>
               <p className="product-desc">{product.description}</p>
-              {count === 5 ? <p>Reached Maximum Limit !</p> : <p></p>}
+              {count === 5 ? <p style={{color: "red", fontSize: 20}}>Reached Maximum Limit !</p> : <p></p>}
               <div className="counter">
                 <button
                   onClick={() => {

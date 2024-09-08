@@ -45,7 +45,6 @@ export default function Gifts() {
     setPriceFiter(e.target.value)
   }
   const handleFragranceFilter = (e,fragrance) =>{
-    e.preventDefault()
     setFragranceFilter(fragrance)
   }
   const clearFilters = () => {
@@ -70,52 +69,49 @@ export default function Gifts() {
         <aside className={`sidebar ${sidebarOpen ? 'show' : ' '}`}>
           {/* Heading Of Left side filter section */}
           <h3>FILTERS</h3>
-          {/* Filter Section */}
-          <ul className="filter-list">
-            <li>
-              <span>Price</span>
-              {/* Radio Button List */}
-              <ul className="menu1">
-                <li>
-                  <input type="radio" name="Price" value="range1" onChange={handlePriceFilter}/>{" "} Less than ₹1000
-                </li>
-                <li>
-                  <input type="radio" name="Price" value="range2" onChange={handlePriceFilter}/>{" "} ₹1000 - ₹2000
-                </li>
-                <li>
-                  <input type="radio" name="Price" value="range3" onChange={handlePriceFilter}/>{" "} ₹2000 - ₹3000
-                </li>
-                <li>
-                  <input type="radio" name="Price" value="range4" onChange={handlePriceFilter}/>{" "} More than ₹3000
-                </li>
-              </ul>
-            </li>
-            {/* Candles Li */}
-            {/* <li>
-              <a href="#">Candles</a>
-            </li> */}
-            {/* Fragnaces Drop-Down On Hover */}
-            <li className="dropdown">
-              <span>Fragrances</span>
-              <ul className="menu">
-                <li>
-                  <button onClick={(e) => handleFragranceFilter(e,'Lavendar')}>Lavendar</button>
-                </li>
-                <li>
-                  <button onClick={(e) => handleFragranceFilter(e,'Rose')}>Rose</button>
-                </li>
-                <li>
-                  <button onClick={(e)=> handleFragranceFilter(e,'Vanilla')}>Vanilla</button>
-                </li>
-                <li>
-                  <button onClick={(e)=> handleFragranceFilter(e,'Jasmine')}>Jasmine</button>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <button onClick={clearFilters}>Clear Filters</button>
-            </li>
-          </ul>
+          
+          <h4>Price</h4>
+          <div>
+            <label className="sidebar-label-container">
+            <input type="radio" name="Price" value="range1" onClick={handlePriceFilter} checked={priceFilter === 'range1'}/>{" "} 
+            <span className="checkmark"></span> Less than ₹1000
+            </label>
+            <label className="sidebar-label-container">
+            <input type="radio" name="Price" value="range2" onChange={handlePriceFilter} checked={priceFilter === 'range2'}/>{" "} 
+            <span className="checkmark"></span> ₹1000 - ₹2000
+            </label>
+            <label className="sidebar-label-container">
+            <input type="radio" name="Price" value="range3" onChange={handlePriceFilter} checked={priceFilter === 'range3'}/>{" "} 
+            <span className="checkmark"></span> ₹2000 - ₹3000
+            </label>
+            <label className="sidebar-label-container">
+            <input type="radio" name="Price" value="range4" onChange={handlePriceFilter} checked={priceFilter === 'range4'}/>{" "} 
+            <span className="checkmark"></span> More than ₹3000
+            </label>
+          </div>
+
+          <div>
+              <h4>Fragrances</h4>
+              <label className="sidebar-label-container">
+                  <input type="radio" name="Fragrance" onChange={(e) => handleFragranceFilter(e,'Lavendar')} checked={fragranceFilter==='Lavendar'}/> 
+                  <span className="checkmark"></span> Lavender
+                </label>
+                <label className="sidebar-label-container">
+                  <input type="radio" name="Fragrance" onChange={(e) => handleFragranceFilter(e,'Rose')} checked={fragranceFilter === 'Rose'}/> 
+                  <span className="checkmark"></span> Rose
+                </label>
+                <label className="sidebar-label-container">
+                  <input type="radio" name="Fragrance" onChange={(e) => handleFragranceFilter(e,'Vanilla')} checked={fragranceFilter === 'Vanilla'}/> 
+                  <span className="checkmark active"></span> Vanilla
+                </label>
+                <label className="sidebar-label-container">
+                  <input type="radio" name="Fragrance" onChange={(e) => handleFragranceFilter(e,'Jasmine')} checked={fragranceFilter === 'Jasmine'} /> 
+                  <span className="checkmark"></span> Jasmine
+                </label>
+              </div>
+            <label>
+              <button id="ClearFilter-btn" onClick={clearFilters}>Clear Filters</button>
+            </label>
         </aside>
         {/* Main Content (Candles Information) This one is only for giving height and width*/}
         <div className="main-content-gift">

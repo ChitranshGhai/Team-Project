@@ -82,6 +82,10 @@
 #prod-cart-heading{
     align-self: flex-start;
     /* margin: 0 0 20px 60px; */
+    font-family: Dream-Avenue;
+    font-size: 60px;
+    font-weight: bold;
+    color: #803D3B;
 }
 
 .cart-headings{
@@ -139,6 +143,12 @@
     align-items: flex-start;
   }
 
+.product-details h3{
+    font-size: 25px;
+}
+.product-details p{
+    font-size: 20px;
+}
 
 .ProductInfo{
     width: 25%;
@@ -217,20 +227,26 @@
 }
 
 @media (max-width: 768px) {
-    .Product {
-        flex-direction: column;
+    .cart-container2{
+        padding: 20px;
     }
     .ProductInfo{
         height: 150px;
-        margin-top: 30px;
     }
     #Products-Pic{
         width: 100%;
         height: auto;
-        max-width: 150px;
+        max-width: 100px;
      }
     
     .product-price{
         height: 150px;
     }
+    .product-details h3{
+        font-size: 20px;
+    }
+    .product-details p{
+        font-size: 15px;
+    }
+    
 }

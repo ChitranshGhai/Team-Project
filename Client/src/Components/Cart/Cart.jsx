@@ -72,8 +72,8 @@ export default function Cart() {
             <div className="Product" key={item._id}>
               <img id="Products-Pic" src={item.image} alt="Product-Pic" />
               <div className="product-details">
-              <h3 style={{fontSize: 25}}>{item.name}</h3>
-              <p style={{fontSize: 20}}>₹ {item.price}</p>
+              <h3>{item.name}</h3>
+              <p>₹ {item.price}</p>
               </div>
             
               <div className="ProductInfo">
