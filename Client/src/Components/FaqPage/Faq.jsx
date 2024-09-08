@@ -25,7 +25,7 @@ function Faq() {
         <Accordion.Item eventKey="2">
           <Accordion.Header>Where are your candles made?</Accordion.Header>
           <Accordion.Body>
-          Our candles are crafted in our workshop located in [Your City, Your State].
+          Our candles are crafted in our workshop located in New Delhi.
           </Accordion.Body>
         </Accordion.Item>
   
