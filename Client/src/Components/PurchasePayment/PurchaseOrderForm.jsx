@@ -76,7 +76,7 @@ function PurchaseOrderForm() {
 
     try {
         // Fetch order data from your server
-        const response = await fetch(`http://localhost:2003/razorpay/${product._id}`, {
+        const response = await fetch(`http://localhost:2003/razorpay/single-order/${product._id}`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

@@ -12,6 +12,7 @@ require("dotenv").config();
 require("./config/dbConn");
 const Order=require('./config/User2')
 const user = require('./config/User');
+const Orders=require('./config/User3')
 
 const PORT = process.env.PORT || 1337;
 
@@ -139,7 +140,7 @@ app.post("/verification", (req, res) => {
     }
   });
 
-app.post("/razorpay/:productId", async (req, res) => {
+app.post("/razorpay/single-order/:productId", async (req, res) => {
     const { productId } = req.params;
 
     // Check if productId is a valid ObjectId
@@ -212,6 +213,79 @@ app.post('/update-order', async (req, res) => {
     }
 });
 
+app.post('/razorpay/create-order', async (req, res) => {
+    const { cartItems, formData } = req.body;
+
+    if (!Array.isArray(cartItems) || cartItems.length === 0) {
+        return res.status(400).json({ message: "No products in cart" });
+    }
+
+    try {
+        let totalAmount = 0;
+        let productDetails = [];
+
+        for (let item of cartItems) {
+            const { _id: productId, quantity } = item;
+
+            if (!mongoose.Types.ObjectId.isValid(productId)) {
+                return res.status(400).json({ message: `product ID not found: ${productId}` });
+            }
+
+            const product = await user.findById(productId);
+            if (!product) {
+                return res.status(404).json({ message: `Product not found for ID: ${productId}` });
+            }
+
+            const productTotal = product.price * quantity;
+            totalAmount += productTotal;
+
+            productDetails.push({
+                productId: productId,
+                name: product.name,
+                price: product.price,
+                quantity: quantity
+            });
+        }
+
+        const amountInPaise = totalAmount * 100;
+        const options = {
+            amount: amountInPaise,
+            currency: 'INR',
+            receipt: shortid.generate(),
+            payment_capture: 1
+        };
+
+        const response = await razorpay.orders.create(options);
+
+        const ordersData = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            address: formData.address,
+            apartment: formData.apartment,
+            city: formData.city,
+            state: formData.state,
+            pinCode: formData.pinCode,
+            phone: formData.phone,
+            products: productDetails,
+            amount: response.amount,
+            currency: response.currency,
+            razorpayOrderId: response.id
+        };
+
+        const orders = new Orders(ordersData);
+        await orders.save();
+
+        res.status(200).json({
+            id: response.id,
+            currency: response.currency,
+            amount: response.amount
+        });
+    } catch (err) {
+        console.error(`Error creating Razorpay order: ${err}`);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+});
 
 
 // Start server

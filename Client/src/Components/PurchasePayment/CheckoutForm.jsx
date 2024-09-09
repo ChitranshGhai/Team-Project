@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './PurchaseOrder.css';
 import { useLocation } from 'react-router-dom';
 
@@ -17,6 +17,18 @@ function CheckoutForm() {
     pinCode: '',
     phone: ''
   });
+  const [totalFromLocalStorage, setTotalFromLocalStorage] = useState(0);
+
+  // Dynamically calculate total amount from local storage
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cartItems');
+    const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+    const calculatedTotal = parsedCart.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotalFromLocalStorage(calculatedTotal);
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -37,69 +49,95 @@ function CheckoutForm() {
 
   async function showRazorpay(e) {
     e.preventDefault();
+  
     // Simple form validation
-    if (!formData.email || !formData.firstName || !formData.lastName || !formData.address || !formData.city || !formData.pinCode || !formData.phone) {
+    if (
+      !formData.email ||
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.address ||
+      !formData.city ||
+      !formData.pinCode ||
+      !formData.phone
+    ) {
       alert("Please fill out all required fields.");
       return;
     }
-
+  
     setLoadingPayment(true); // Show loading state
-
+  
     const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
-
+  
     if (!res) {
       alert("Razorpay SDK failed to load. Are you online?");
       setLoadingPayment(false);
       return;
     }
-
+    console.log('Total Amount:', totalFromLocalStorage);
+  console.log('Form Data:', formData);
+  console.log('cart items',cartItems)
     try {
       const response = await fetch(`http://localhost:2003/razorpay/create-order`, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cartItems, formData })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cartItems,totalAmount: totalFromLocalStorage, formData })
       });
-
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response from backend:', errorText);
+        throw new Error(`Failed to create order: ${response.status}`);
+      }
+  
       const data = await response.json();
-
+      console.log('Order created successfully:', data);
+  
+      // Proceed to open Razorpay payment window with options
       const options = {
-        key: process.env.REACT_APP_RAZORPAY_KEY || "rzp_test_4W26iQdHpqmXmZ",  // Use environment variable for Razorpay key
+        key: "rzp_test_4W26iQdHpqmXmZ", // Replace with your Razorpay Key ID
         currency: data.currency,
         amount: data.amount.toString(),
         order_id: data.id,
         name: "Your Order",
         description: "Payment for your order",
         handler: async function (response) {
-          const updateResponse = await fetch('http://localhost:2003/update-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+          const updateResponse = await fetch("http://localhost:2003/update-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               razorpayPaymentId: response.razorpay_payment_id,
               razorpayOrderId: response.razorpay_order_id,
               razorpaySignature: response.razorpay_signature
             })
           });
-
-          alert("Payment successful!");
+  
+          if (updateResponse.ok) {
+            alert("Payment successful!");
+          } else {
+            alert("Payment success but failed to update the order.");
+          }
         },
         prefill: {
           name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
-          phone_number: formData.phone,
+          phone_number: formData.phone
         },
         notes: {
-          address: `${formData.address}, ${formData.apartment}, ${formData.city}, ${formData.state}, ${formData.pinCode}`,
-        },
+          address: `${formData.address}, ${formData.apartment || ''}, ${formData.city}, ${formData.state}, ${formData.pinCode}`
+        }
       };
+  
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
+  
     } catch (err) {
+      console.error("Error during payment:", err);
       alert("There was an issue initiating your payment. Please try again.");
     }
-
-    setLoadingPayment(false); // Reset loading state after payment is handled
+  
+    setLoadingPayment(false); // Reset loading state after the process
   }
-
+   // Reset loading state after payment is handled
   return (
     <div className='Order-Main-Container'>
       <div className='Form-Container-div'>
@@ -235,7 +273,7 @@ function CheckoutForm() {
         <div className="Amount-Detail">
           <div className='order-subtotal'>
             <p>Subtotal:</p>
-            <p>₹{totalAmount}</p>
+            <p>₹{totalFromLocalStorage}</p>
           </div>
 
           <div className='Shipping'>
@@ -245,7 +283,7 @@ function CheckoutForm() {
 
           <div className='order-Total'>
             <p>Total:</p>
-            <p>₹{totalAmount}</p>
+            <p>₹{totalFromLocalStorage}</p>
           </div>
         </div>
       </div>
