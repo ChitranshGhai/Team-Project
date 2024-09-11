@@ -8,31 +8,32 @@ import Logo from "./Images/SirimiriLogo.png";
 function NavBar({ isLoggedIn }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userdata, setUserData] = useState({});
-  const [localUser, setLocalUser] = useState(null); // state to hold local login user
+  const [localUser, setLocalUser] = useState(null);
 
   const getUser = async () => {
     try {
       const result = await axios.get("http://localhost:9998/login/success", {
         withCredentials: true,
       });
-      localStorage.setItem("user", JSON.stringify(result));
-      setUserData(result.data.user);
+      const userData = result.data.user; // Ensure you get the correct user object
+      if (userData) {
+        localStorage.setItem("user", JSON.stringify(userData));
+        setUserData(userData);
+      }
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        console.error("User not logged in");
+        console.log("User not logged in");
       } else {
-        console.error("An error occurred");
+        console.log("An error occurred");
       }
     }
   };
 
   useEffect(() => {
-    // Fetch Google Auth user
     getUser();
-    // Fetch form-authenticated user from local storage
-    const localUser = JSON.parse(localStorage.getItem("user:"));
-    if (localUser) {
-      setLocalUser(localUser);
+    const localUserData = JSON.parse(localStorage.getItem("user:")); // corrected localStorage key
+    if (localUserData) {
+      setLocalUser(localUserData);
     }
   }, [isLoggedIn]);
 
@@ -72,11 +73,11 @@ function NavBar({ isLoggedIn }) {
               Bulk Order Enquiry
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="Nav-List-Link" to="/Collections">
               Collections
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link className="Nav-List-Link" to="/OurStory">
               Our Story
@@ -87,13 +88,6 @@ function NavBar({ isLoggedIn }) {
               Contact Us
             </Link>
           </li>
-          {userdata.isAdmin && (
-            <li>
-              <Link className="Nav-List-Link" to="/Admin">
-                Admin
-              </Link>
-            </li>
-          )}
         </ul>
       </div>
 
@@ -106,8 +100,7 @@ function NavBar({ isLoggedIn }) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark">
-              <Dropdown.Item href="#/action-1">Your Account</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Your Orders</Dropdown.Item>
+              <Dropdown.Item href="/AccountDetails">Your Account</Dropdown.Item>
               <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -118,8 +111,7 @@ function NavBar({ isLoggedIn }) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu variant="dark">
-              <Dropdown.Item href="#/action-1">Your Account</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Your Orders</Dropdown.Item>
+              <Dropdown.Item href="/AccountDetails">Your Account</Dropdown.Item>
               <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

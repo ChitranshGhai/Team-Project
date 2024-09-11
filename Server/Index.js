@@ -3,6 +3,7 @@ const port = 9998;
 const app = express();
 require("./config/dbConn");
 const Item = require("./config/User")
+const Bulk = require('./config/Bulk');
 const customer = require("./config/User1");
 const cors = require("cors");
 const passport = require("passport");
@@ -97,7 +98,7 @@ app.get("/login/success", async(req,res)=>{
         res.status(200).json({message:"user Login",user:req.user})
     }
     else{
-        res.status(400).json({message:"Failed Login"})
+        res.json({message:"Currently Not Logged In"})
     }
 })
 
@@ -115,13 +116,23 @@ app.get("/logout",async (req,res)=>{
 })
 
 //login api
+// Updated login api
 app.post("/api/Login", async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await customer.findOne({ email: email });
     if (user) {
       if (user.password === password) {
-        res.json({ data: "Success" });
+        res.json({
+          data: "Success",
+          user: {
+            name: user.name,
+            email: user.email,
+            GoogleId: user.GoogleId || null,
+            country: user.country || "India", // Default to "India" if not present
+            language: user.language || "English", // Default to "English" if not present
+          },
+        });
       } else {
         res.json({ data: "The Password is Incorrect" });
       }
@@ -146,6 +157,34 @@ app.post("/api/SignUp", async (req, res) => {
     console.log(err);
   }
 });
+
+
+
+
+// POST API to handle form submissions
+app.post('/api/bulkorders', async (req, res) => {
+  try {
+    const newBulkOrder = new Bulk(req.body);
+    await newBulkOrder.save();
+    res.status(201).json({ success: true });
+  } catch (error) {
+    console.error("Error saving bulk order:", error.message, req.body); // Add req.body to see what is being sent
+    res.status(500).json({ success: false, message: 'Error saving bulk order' });
+  }
+});
+
+
+// GET API to retrieve all orders
+app.get('/api/getbulkorders', async (req, res) => {
+  try {
+    const orders = await Bulk.find(); // Fetch all orders
+    res.status(200).json(orders); // Return the data
+  } catch (error) {
+    console.error("Error retrieving bulk orders:", error);
+    res.status(500).json({ success: false, message: 'Error retrieving bulk orders' });
+  }
+});
+
 
 
 //listening port

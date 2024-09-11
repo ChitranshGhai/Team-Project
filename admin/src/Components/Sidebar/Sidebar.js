@@ -18,10 +18,10 @@ function Sidebar() {
         <p style={{margin:0}}>Products List</p>
       </Link>
 
-      <Link className='Side-Panel' to='/ShowOrders'>
+      {/* <Link className='Side-Panel' to='/ShowOrders'>
         <i className="bi bi-card-list" style={{margin:10, fontSize:25}}></i>
         <p style={{margin:0}}>Orders</p>
-      </Link>
+      </Link> */}
 
     </div>
   )

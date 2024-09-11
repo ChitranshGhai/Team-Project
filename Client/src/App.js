@@ -17,6 +17,7 @@ import TermsConditions from "./Components/TermsCon/TermsandCon";
 import PurchaseOrderForm from "./Components/PurchasePayment/PurchaseOrderForm";
 import { useState } from "react";
 import CheckoutForm from "./Components/PurchasePayment/CheckoutForm";
+import AccountDetails from "./Components/YourAccountPage/YourAccountPage";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);  
   const handleLoginSuccess = () => {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/TermsandCon" element={<TermsConditions />} />
             <Route path="/PurchaseOrderForm/:id" element={<PurchaseOrderForm />} />
             <Route path="/CheckoutForm" element={<CheckoutForm/>}/>
+            <Route path="/AccountDetails" element={<AccountDetails/>}/>
           </Routes>
         </ScrollToTop>
         <Footer />
